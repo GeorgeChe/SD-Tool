@@ -32,8 +32,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -88,10 +86,9 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button16);
-            this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
@@ -100,26 +97,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Software";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button16.Location = new System.Drawing.Point(6, 143);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(204, 38);
-            this.button16.TabIndex = 5;
-            this.button16.Text = "Used Net Adapters";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // button15
-            // 
-            this.button15.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button15.Location = new System.Drawing.Point(6, 97);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(204, 38);
-            this.button15.TabIndex = 4;
-            this.button15.Text = "Used Net Adapters";
-            this.button15.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -147,7 +124,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button2.Location = new System.Drawing.Point(6, 190);
+            this.button2.Location = new System.Drawing.Point(6, 95);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(204, 38);
             this.button2.TabIndex = 1;
@@ -248,7 +225,6 @@
             this.tabPage3.Controls.Add(this.button12);
             this.tabPage3.Controls.Add(this.button11);
             this.tabPage3.Controls.Add(this.button10);
-            this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -367,8 +343,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Button button3;
     }
 }
