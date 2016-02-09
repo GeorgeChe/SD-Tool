@@ -32,7 +32,10 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -49,9 +52,6 @@
             this.button10 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -79,10 +79,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.tabControl1.Location = new System.Drawing.Point(776, 106);
+            this.tabControl1.Location = new System.Drawing.Point(776, 92);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(224, 529);
+            this.tabControl1.Size = new System.Drawing.Size(224, 543);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Tag = "";
             // 
@@ -91,22 +91,41 @@
             this.tabPage1.Controls.Add(this.button16);
             this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.pictureBox1);
-            this.tabPage1.Controls.Add(this.button3);
-            this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(216, 502);
+            this.tabPage1.Size = new System.Drawing.Size(216, 516);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Software";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Font = new System.Drawing.Font("Lucida Console", 9.75F);
+            this.button16.Location = new System.Drawing.Point(6, 143);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(204, 38);
+            this.button16.TabIndex = 5;
+            this.button16.Text = "Used Net Adapters";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // button15
+            // 
+            this.button15.Font = new System.Drawing.Font("Lucida Console", 9.75F);
+            this.button15.Location = new System.Drawing.Point(6, 97);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(204, 38);
+            this.button15.TabIndex = 4;
+            this.button15.Text = "Used Net Adapters";
+            this.button15.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.LightGray;
             this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.LoadingCircle;
-            this.pictureBox1.Location = new System.Drawing.Point(163, 11);
+            this.pictureBox1.Location = new System.Drawing.Point(175, 11);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -114,12 +133,23 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Lucida Console", 9.75F);
+            this.button3.Location = new System.Drawing.Point(6, 51);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(204, 38);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Used Net Adapters";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button2.Location = new System.Drawing.Point(15, 53);
+            this.button2.Location = new System.Drawing.Point(6, 190);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 40);
+            this.button2.Size = new System.Drawing.Size(204, 38);
             this.button2.TabIndex = 1;
             this.button2.Text = "Drivers Info";
             this.button2.UseVisualStyleBackColor = true;
@@ -128,9 +158,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button1.Location = new System.Drawing.Point(15, 7);
+            this.button1.Location = new System.Drawing.Point(6, 7);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 40);
+            this.button1.Size = new System.Drawing.Size(204, 38);
             this.button1.TabIndex = 0;
             this.button1.Text = "Windows Info";
             this.button1.UseVisualStyleBackColor = true;
@@ -147,16 +177,16 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(216, 502);
+            this.tabPage2.Size = new System.Drawing.Size(216, 516);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hardware";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(21, 236);
+            this.button9.Location = new System.Drawing.Point(6, 235);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(180, 40);
+            this.button9.Size = new System.Drawing.Size(204, 38);
             this.button9.TabIndex = 6;
             this.button9.Text = "Installed Net Adapters";
             this.button9.UseVisualStyleBackColor = true;
@@ -164,9 +194,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(21, 190);
+            this.button8.Location = new System.Drawing.Point(6, 189);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(180, 40);
+            this.button8.Size = new System.Drawing.Size(204, 38);
             this.button8.TabIndex = 5;
             this.button8.Text = "HDD Info";
             this.button8.UseVisualStyleBackColor = true;
@@ -174,9 +204,9 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(21, 144);
+            this.button7.Location = new System.Drawing.Point(6, 143);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(180, 40);
+            this.button7.Size = new System.Drawing.Size(204, 38);
             this.button7.TabIndex = 4;
             this.button7.Text = "RAM Info";
             this.button7.UseVisualStyleBackColor = true;
@@ -184,9 +214,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(21, 98);
+            this.button6.Location = new System.Drawing.Point(6, 97);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(180, 40);
+            this.button6.Size = new System.Drawing.Size(204, 38);
             this.button6.TabIndex = 3;
             this.button6.Text = "Processor Info";
             this.button6.UseVisualStyleBackColor = true;
@@ -194,9 +224,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(21, 52);
+            this.button5.Location = new System.Drawing.Point(6, 51);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(180, 40);
+            this.button5.Size = new System.Drawing.Size(204, 38);
             this.button5.TabIndex = 2;
             this.button5.Text = "Bios Info";
             this.button5.UseVisualStyleBackColor = true;
@@ -204,9 +234,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(21, 6);
+            this.button4.Location = new System.Drawing.Point(6, 7);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(180, 40);
+            this.button4.Size = new System.Drawing.Size(204, 38);
             this.button4.TabIndex = 1;
             this.button4.Text = "Model Info";
             this.button4.UseVisualStyleBackColor = true;
@@ -218,19 +248,20 @@
             this.tabPage3.Controls.Add(this.button12);
             this.tabPage3.Controls.Add(this.button11);
             this.tabPage3.Controls.Add(this.button10);
+            this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(216, 502);
+            this.tabPage3.Size = new System.Drawing.Size(216, 516);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reports";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(18, 144);
+            this.button13.Location = new System.Drawing.Point(6, 144);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(180, 40);
+            this.button13.Size = new System.Drawing.Size(204, 38);
             this.button13.TabIndex = 4;
             this.button13.Text = "Full Machine Report";
             this.button13.UseVisualStyleBackColor = true;
@@ -238,9 +269,9 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(18, 98);
+            this.button12.Location = new System.Drawing.Point(6, 98);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(180, 40);
+            this.button12.Size = new System.Drawing.Size(204, 38);
             this.button12.TabIndex = 3;
             this.button12.Text = "Services Report";
             this.button12.UseVisualStyleBackColor = true;
@@ -248,9 +279,9 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(18, 52);
+            this.button11.Location = new System.Drawing.Point(6, 51);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(180, 40);
+            this.button11.Size = new System.Drawing.Size(204, 38);
             this.button11.TabIndex = 2;
             this.button11.Text = "Event Log Report";
             this.button11.UseVisualStyleBackColor = true;
@@ -258,9 +289,9 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(18, 6);
+            this.button10.Location = new System.Drawing.Point(6, 7);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(180, 40);
+            this.button10.Size = new System.Drawing.Size(204, 38);
             this.button10.TabIndex = 1;
             this.button10.Text = "Group Policy Report";
             this.button10.UseVisualStyleBackColor = true;
@@ -272,54 +303,23 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Lucida Console", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(798, 12);
+            this.textBox2.Location = new System.Drawing.Point(780, 12);
             this.textBox2.MaxLength = 9;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 31);
+            this.textBox2.Size = new System.Drawing.Size(216, 31);
             this.textBox2.TabIndex = 2;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // button14
             // 
             this.button14.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(795, 63);
+            this.button14.Location = new System.Drawing.Point(780, 49);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(183, 37);
+            this.button14.Size = new System.Drawing.Size(216, 37);
             this.button14.TabIndex = 3;
             this.button14.Text = "Check Machine";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button3.Location = new System.Drawing.Point(15, 99);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(180, 40);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Used Net Adapters";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button15
-            // 
-            this.button15.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button15.Location = new System.Drawing.Point(14, 231);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(180, 40);
-            this.button15.TabIndex = 4;
-            this.button15.Text = "Used Net Adapters";
-            this.button15.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.button16.Location = new System.Drawing.Point(15, 277);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(180, 40);
-            this.button16.TabIndex = 5;
-            this.button16.Text = "Used Net Adapters";
-            this.button16.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
