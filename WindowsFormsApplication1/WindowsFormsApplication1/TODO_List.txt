@@ -1,1 +1,6 @@
-﻿
+﻿1. Create User and Machine Tabs (George)
+2. Create User tab elements (George)
+3. Integrate AD powershell script with C# (Liviu)
+4. Create ToolBar (George)
+
+That's all I can think about for now.
