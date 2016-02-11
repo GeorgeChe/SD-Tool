@@ -113,7 +113,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(835, 796);
+            this.textBox1.Size = new System.Drawing.Size(835, 595);
             this.textBox1.TabIndex = 0;
             // 
             // tabControl1
@@ -127,7 +127,7 @@
             this.tabControl1.Location = new System.Drawing.Point(847, 86);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(223, 716);
+            this.tabControl1.Size = new System.Drawing.Size(223, 515);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Tag = "";
             // 
@@ -140,7 +140,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(215, 689);
+            this.tabPage1.Size = new System.Drawing.Size(215, 488);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Software";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -201,7 +201,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(215, 690);
+            this.tabPage2.Size = new System.Drawing.Size(215, 506);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hardware";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -275,7 +275,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(215, 690);
+            this.tabPage3.Size = new System.Drawing.Size(215, 506);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reports";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -355,7 +355,7 @@
             this.tabControl2.Location = new System.Drawing.Point(13, 13);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1084, 655);
+            this.tabControl2.Size = new System.Drawing.Size(1084, 637);
             this.tabControl2.TabIndex = 4;
             // 
             // Machine_Tab
@@ -368,7 +368,7 @@
             this.Machine_Tab.Location = new System.Drawing.Point(4, 26);
             this.Machine_Tab.Name = "Machine_Tab";
             this.Machine_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Machine_Tab.Size = new System.Drawing.Size(1076, 808);
+            this.Machine_Tab.Size = new System.Drawing.Size(1076, 607);
             this.Machine_Tab.TabIndex = 0;
             this.Machine_Tab.Text = "Machine";
             this.Machine_Tab.UseVisualStyleBackColor = true;
@@ -417,7 +417,7 @@
             this.User_Tab.Location = new System.Drawing.Point(4, 26);
             this.User_Tab.Name = "User_Tab";
             this.User_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.User_Tab.Size = new System.Drawing.Size(1076, 625);
+            this.User_Tab.Size = new System.Drawing.Size(1076, 607);
             this.User_Tab.TabIndex = 1;
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
@@ -791,7 +791,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 680);
+            this.ClientSize = new System.Drawing.Size(1109, 662);
             this.Controls.Add(this.tabControl2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
