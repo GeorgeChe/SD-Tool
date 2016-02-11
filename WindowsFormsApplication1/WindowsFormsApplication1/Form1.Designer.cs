@@ -115,12 +115,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.textBox1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(6, 6);
+            this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(835, 595);
+            this.textBox1.Size = new System.Drawing.Size(826, 608);
             this.textBox1.TabIndex = 0;
             // 
             // tabControl1
@@ -131,10 +131,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Lucida Console", 9.75F);
-            this.tabControl1.Location = new System.Drawing.Point(847, 86);
+            this.tabControl1.Location = new System.Drawing.Point(828, 80);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(223, 515);
+            this.tabControl1.Size = new System.Drawing.Size(224, 528);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Tag = "";
             // 
@@ -147,7 +147,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(215, 488);
+            this.tabPage1.Size = new System.Drawing.Size(215, 501);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Software";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -208,7 +208,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(215, 506);
+            this.tabPage2.Size = new System.Drawing.Size(224, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hardware";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -282,7 +282,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(215, 506);
+            this.tabPage3.Size = new System.Drawing.Size(216, 501);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reports";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -331,10 +331,10 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.Font = new System.Drawing.Font("Lucida Console", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(847, 6);
+            this.textBox2.Location = new System.Drawing.Point(828, 0);
             this.textBox2.MaxLength = 9;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(223, 31);
+            this.textBox2.Size = new System.Drawing.Size(224, 31);
             this.textBox2.TabIndex = 2;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -342,9 +342,9 @@
             // 
             this.button14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button14.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(847, 43);
+            this.button14.Location = new System.Drawing.Point(828, 37);
             this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(223, 37);
+            this.button14.Size = new System.Drawing.Size(224, 37);
             this.button14.TabIndex = 3;
             this.button14.Text = "Check Machine";
             this.button14.UseVisualStyleBackColor = true;
@@ -362,7 +362,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 27);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1109, 667);
+            this.tabControl2.Size = new System.Drawing.Size(1060, 638);
             this.tabControl2.TabIndex = 4;
             // 
             // Machine_Tab
@@ -375,7 +375,7 @@
             this.Machine_Tab.Location = new System.Drawing.Point(4, 26);
             this.Machine_Tab.Name = "Machine_Tab";
             this.Machine_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.Machine_Tab.Size = new System.Drawing.Size(1076, 607);
+            this.Machine_Tab.Size = new System.Drawing.Size(1052, 608);
             this.Machine_Tab.TabIndex = 0;
             this.Machine_Tab.Text = "Machine";
             this.Machine_Tab.UseVisualStyleBackColor = true;
@@ -424,7 +424,7 @@
             this.User_Tab.Location = new System.Drawing.Point(4, 26);
             this.User_Tab.Name = "User_Tab";
             this.User_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.User_Tab.Size = new System.Drawing.Size(1101, 637);
+            this.User_Tab.Size = new System.Drawing.Size(1052, 608);
             this.User_Tab.TabIndex = 1;
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
@@ -800,7 +800,8 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(1060, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -828,9 +829,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.application_load_toolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 697);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 668);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1109, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1060, 22);
             this.statusStrip1.TabIndex = 5;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -838,7 +839,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 719);
+            this.ClientSize = new System.Drawing.Size(1060, 690);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl2);
