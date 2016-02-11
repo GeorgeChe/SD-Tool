@@ -91,6 +91,11 @@
             this.label16 = new System.Windows.Forms.Label();
             this.dc_comboBox = new System.Windows.Forms.ComboBox();
             this.current_dc_lbl = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.application_load_toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -99,6 +104,8 @@
             this.tabControl2.SuspendLayout();
             this.Machine_Tab.SuspendLayout();
             this.User_Tab.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -352,10 +359,10 @@
             this.tabControl2.Controls.Add(this.User_Tab);
             this.tabControl2.Controls.Add(this.Machine_Tab);
             this.tabControl2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl2.Location = new System.Drawing.Point(13, 13);
+            this.tabControl2.Location = new System.Drawing.Point(0, 27);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1084, 637);
+            this.tabControl2.Size = new System.Drawing.Size(1109, 667);
             this.tabControl2.TabIndex = 4;
             // 
             // Machine_Tab
@@ -417,7 +424,7 @@
             this.User_Tab.Location = new System.Drawing.Point(4, 26);
             this.User_Tab.Name = "User_Tab";
             this.User_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.User_Tab.Size = new System.Drawing.Size(1076, 607);
+            this.User_Tab.Size = new System.Drawing.Size(1101, 637);
             this.User_Tab.TabIndex = 1;
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
@@ -787,13 +794,56 @@
             this.current_dc_lbl.TabIndex = 37;
             this.current_dc_lbl.Text = "Current DC:";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1109, 24);
+            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // application_load_toolStripStatusLabel
+            // 
+            this.application_load_toolStripStatusLabel.Name = "application_load_toolStripStatusLabel";
+            this.application_load_toolStripStatusLabel.Size = new System.Drawing.Size(26, 17);
+            this.application_load_toolStripStatusLabel.Text = "Idle";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.application_load_toolStripStatusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 697);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1109, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1109, 662);
+            this.ClientSize = new System.Drawing.Size(1109, 719);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.tabControl2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -808,7 +858,12 @@
             this.Machine_Tab.PerformLayout();
             this.User_Tab.ResumeLayout(false);
             this.User_Tab.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -876,6 +931,11 @@
         private System.Windows.Forms.ComboBox dc_comboBox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel application_load_toolStripStatusLabel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 
