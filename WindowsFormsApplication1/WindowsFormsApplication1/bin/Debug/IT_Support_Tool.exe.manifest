@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>3vimKx4rq/5dAAjn2BoxRGbca6aT1v/hy9AI3+XAaiE=</dsig:DigestValue>
+        <dsig:DigestValue>CchmIaExAWLwicXLCoSFcC/ruvCg21aUcSmXWVLJP2M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,13 +63,13 @@
       <dsig:DigestValue>5V56+dqU9KZws6Bsx5HmPLumdXPspeuOn0quqih3oAg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="IT_Support_Tool.exe.config" size="184">
+  <file name="IT_Support_Tool.exe.config" size="178">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YyXx11OQ8Y9qQaMsAPfgWQIUIJMPT4Sw3i2UQTU2sRM=</dsig:DigestValue>
+      <dsig:DigestValue>99quqBP3LkKA5r/eDtx+5/BU6wUiADC+z31EUEMtKSc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LoadingCircle.gif" size="2608">
@@ -81,22 +81,22 @@
       <dsig:DigestValue>YNDxAs+WVjTHXRZAssN3UwLklfILhMGLVldiWeONiPc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="MachineInfo.psm1" size="47657">
+  <file name="MachineInfo.psm1" size="46485">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>DtB0GTgz99bP28MnNxIEXgyu5r2/gF7bEuBhfZa2Le0=</dsig:DigestValue>
+      <dsig:DigestValue>SBSKFG+cMqiSy7rHp/bL7ssMV8UfLOn+shT/GOb0jWc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TODO_List.txt" size="504">
+  <file name="TODO_List.txt" size="496">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>dYQsqk9Xp6qatuBgipFsUArDs1TGCs+rVjqcc0VuYQk=</dsig:DigestValue>
+      <dsig:DigestValue>9buH4pVRb24OzGWcRgz9CUQgXnwDeUK9Ea/t0CkU2Hs=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

@@ -8,20 +8,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class SD : Form
     {
-        static string theDirectory =AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
+        static string theDirectory = AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
         static string the2ndDir = "'" + theDirectory + "'";
-        public Form1()
+
+
+                
+        public SD()
         {
             InitializeComponent();
-        }
+            Process[] processlist = Process.GetProcesses();
 
+            foreach (Process theprocess in processlist)
+            {
+                Debug.Print($"Process: {theprocess.ProcessName} ID: {theprocess.Id}");
+            }
+
+        }
         static string RunPowerShell(string command)
-        {   
+        {
             string comm = command;
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = @"powershell.exe";
@@ -41,11 +51,12 @@ namespace WindowsFormsApplication1
         private string ReturnText(string result)
         {
             string makeSpace = "************************************************************************";
-            textBox1.Text = makeSpace+"\n"+result+"\n"+textBox1.Text;
+            textBox1.Text = makeSpace+"\n"+result+"\n"+makeSpace+textBox1.Text;
             return result;
         }
         private async Task MakeTheWorldBurnAsync(int button)
         {
+            pictureBox1.Visible = true;
             string computerName = textBox2.Text;
             switch (button)
             {
@@ -53,7 +64,6 @@ namespace WindowsFormsApplication1
                     string text = await Task.Run(() => RunPowerShell(String.Format("Get-WindowsInfo -ComputerName {0}", computerName)));
                     ReturnText(text);
                     this.button1.Enabled = true;
-                    pictureBox1.Visible = false;
                     break;
                 case 2:
                     text = await Task.Run(() => RunPowerShell(String.Format("Get-DriverInfo -ComputerName {0}", computerName)));
@@ -122,12 +132,10 @@ namespace WindowsFormsApplication1
                     break;
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(1);
             this.button1.Enabled = false;
-            pictureBox1.Visible = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -219,6 +227,11 @@ namespace WindowsFormsApplication1
         }
 
         private void User_Tab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

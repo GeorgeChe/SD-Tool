@@ -335,7 +335,7 @@ function Get-WindowsInfo
                 }
                 Catch
                 {
-                    Write-Output "Machine not online or PowerShell is unable to read it"
+                    Write-Output "`nMachine not online or PowerShell is unable to read it"
                     Write-Output "$($Error[0])"
                 }
             }
