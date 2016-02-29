@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -17,18 +17,9 @@ namespace WindowsFormsApplication1
         static string theDirectory = AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
         static string the2ndDir = "'" + theDirectory + "'";
 
-
-                
         public SD()
         {
             InitializeComponent();
-            Process[] processlist = Process.GetProcesses();
-
-            foreach (Process theprocess in processlist)
-            {
-                Debug.Print($"Process: {theprocess.ProcessName} ID: {theprocess.Id}");
-            }
-
         }
         static string RunPowerShell(string command)
         {
@@ -50,8 +41,9 @@ namespace WindowsFormsApplication1
         }
         private string ReturnText(string result)
         {
-            string makeSpace = "************************************************************************";
+            string makeSpace = "***************************************************************************";
             textBox1.Text = makeSpace+"\n"+result+"\n"+makeSpace+textBox1.Text;
+            pictureBox1.Visible = false; // face loading bar-ul sa dispara
             return result;
         }
         private async Task MakeTheWorldBurnAsync(int button)
@@ -61,6 +53,10 @@ namespace WindowsFormsApplication1
             switch (button)
             {
                 case 1:
+                   // fa o noua metoda care sa fie apelata doar daca butonul pe a fost apasat devinde din nou true
+                   // >> metoda trebuie sa schimbe intre running si idle si cercul care se roteste
+                   // also sa faca o lista cu numele comenzilor care le ruleaza
+                   //
                     string text = await Task.Run(() => RunPowerShell(String.Format("Get-WindowsInfo -ComputerName {0}", computerName)));
                     ReturnText(text);
                     this.button1.Enabled = true;
