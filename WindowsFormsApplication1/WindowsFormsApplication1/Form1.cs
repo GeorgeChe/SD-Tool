@@ -16,12 +16,32 @@ namespace WindowsFormsApplication1
     {
         static string theDirectory = AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
         static string the2ndDir = "'" + theDirectory + "'";
+        int processId = 0;
+        // fa o noua metoda care sa fie apelata doar daca butonul pe a fost apasat devinde din nou true
+        // >> metoda trebuie sa schimbe intre running si idle si cercul care se roteste
+        // also sa faca o lista cu numele comenzilor care le ruleaza
+        //pictureBox1.Visible = true;
+        //pictureBox1.Visible = false; // face loading bar-ul sa dispara
+        //label17.Text = "Running";
+        //
 
         public SD()
         {
             InitializeComponent();
         }
-        static string RunPowerShell(string command)
+        void CheckStatus()
+        {
+            if (processId > 0)
+            {
+                pictureBox1.Visible = true;
+                label17.Text = "Running";
+            } else if (processId < 1)
+            {
+                pictureBox1.Visible = false;
+                label17.Text = "Idle";
+            }
+        }
+        string RunPowerShell(string command)
         {
             string comm = command;
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -34,29 +54,26 @@ namespace WindowsFormsApplication1
             startInfo.CreateNoWindow = true;
             Process process = new Process();
             process.StartInfo = startInfo;
-            process.Start();     
+            process.Start();
             string output = process.StandardOutput.ReadToEnd();
             process.Close();
             return output;
         }
         private string ReturnText(string result)
         {
+            processId--;
             string makeSpace = "***************************************************************************";
             textBox1.Text = makeSpace+"\n"+result+"\n"+makeSpace+textBox1.Text;
-            pictureBox1.Visible = false; // face loading bar-ul sa dispara
+            CheckStatus();
             return result;
         }
         private async Task MakeTheWorldBurnAsync(int button)
         {
-            pictureBox1.Visible = true;
+            processId++;
             string computerName = textBox2.Text;
             switch (button)
             {
                 case 1:
-                   // fa o noua metoda care sa fie apelata doar daca butonul pe a fost apasat devinde din nou true
-                   // >> metoda trebuie sa schimbe intre running si idle si cercul care se roteste
-                   // also sa faca o lista cu numele comenzilor care le ruleaza
-                   //
                     string text = await Task.Run(() => RunPowerShell(String.Format("Get-WindowsInfo -ComputerName {0}", computerName)));
                     ReturnText(text);
                     this.button1.Enabled = true;
@@ -132,84 +149,98 @@ namespace WindowsFormsApplication1
         {
             MakeTheWorldBurnAsync(1);
             this.button1.Enabled = false;
+            CheckStatus();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(2);
             this.button2.Enabled = false;
+            CheckStatus();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(3);
             this.button3.Enabled = false;
+            CheckStatus();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(4);
             this.button4.Enabled = false;
+            CheckStatus();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(5);
             this.button5.Enabled = false;
+            CheckStatus();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(6);
             this.button6.Enabled = false;
+            CheckStatus();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(7);
             this.button7.Enabled = false;
+            CheckStatus();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(8);
             this.button8.Enabled = false;
+            CheckStatus();
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(9);
             this.button9.Enabled = false;
+            CheckStatus();
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(10);
             this.button10.Enabled = false;
+            CheckStatus();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(11);
             this.button11.Enabled = false;
+            CheckStatus();
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(12);
             this.button12.Enabled = false;
+            CheckStatus();
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(13);
             this.button13.Enabled = false;
+            CheckStatus();
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(14);
             this.button14.Enabled = false;
+            CheckStatus();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -223,11 +254,6 @@ namespace WindowsFormsApplication1
         }
 
         private void User_Tab_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

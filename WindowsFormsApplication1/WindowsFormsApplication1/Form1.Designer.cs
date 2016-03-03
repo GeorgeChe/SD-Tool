@@ -32,7 +32,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -97,9 +97,9 @@
             this.label17 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl2.SuspendLayout();
             this.User_Tab.SuspendLayout();
             this.Machine_Tab.SuspendLayout();
@@ -149,18 +149,6 @@
             this.tabPage1.Text = "Software";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.LoadingCircle;
-            this.pictureBox1.Location = new System.Drawing.Point(117, 683);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Lucida Console", 9.75F);
@@ -205,7 +193,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(216, 501);
+            this.tabPage2.Size = new System.Drawing.Size(216, 519);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hardware";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -279,7 +267,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 23);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(216, 501);
+            this.tabPage3.Size = new System.Drawing.Size(216, 519);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Reports";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -323,6 +311,18 @@
             this.button10.Text = "Group Policy Report";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::WindowsFormsApplication1.Properties.Resources.LoadingCircle;
+            this.pictureBox1.Location = new System.Drawing.Point(117, 683);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // textBox2
             // 
@@ -406,7 +406,7 @@
             this.User_Tab.Location = new System.Drawing.Point(4, 26);
             this.User_Tab.Name = "User_Tab";
             this.User_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.User_Tab.Size = new System.Drawing.Size(1052, 608);
+            this.User_Tab.Size = new System.Drawing.Size(1053, 626);
             this.User_Tab.TabIndex = 1;
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
@@ -813,7 +813,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // label17
@@ -822,8 +822,9 @@
             this.label17.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(7, 693);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(0, 16);
+            this.label17.Size = new System.Drawing.Size(68, 16);
             this.label17.TabIndex = 7;
+            this.label17.Text = "Ready!";
             // 
             // SD
             // 
@@ -841,9 +842,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl2.ResumeLayout(false);
             this.User_Tab.ResumeLayout(false);
             this.User_Tab.PerformLayout();
