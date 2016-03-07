@@ -74,6 +74,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Threading.Tasks">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Microsoft SDKs\NETCoreSDK\System.Threading.Tasks\4.0.10\runtimes\win8-aot\lib\netcore50\System.Threading.Tasks.dll</HintPath>
     </Reference>

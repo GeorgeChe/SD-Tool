@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
+using System.DirectoryServices.AccountManagement;
+using System.Collections.Generic;
 
 namespace WindowsFormsApplication1
 {
@@ -16,18 +11,51 @@ namespace WindowsFormsApplication1
     {
         static string theDirectory = AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
         static string the2ndDir = "'" + theDirectory + "'";
-        int processId = 0;
-        // fa o noua metoda care sa fie apelata doar daca butonul pe a fost apasat devinde din nou true
-        // >> metoda trebuie sa schimbe intre running si idle si cercul care se roteste
-        // also sa faca o lista cu numele comenzilor care le ruleaza
-        //pictureBox1.Visible = true;
-        //pictureBox1.Visible = false; // face loading bar-ul sa dispara
-        //label17.Text = "Running";
-        //
+        int processId = 0; // counts how many processes are running
+        string loggedUser = "";
 
         public SD()
         {
             InitializeComponent();
+            loggedUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name; // Get the user id logged on the machine
+            CheckUser(loggedUser);
+            this.Text += " " + loggedUser;
+        }
+        void CheckUser(string user)
+        {
+            user = loggedUser.Substring(4).ToUpper();
+            string groupName = "UK IT Support Romania";
+            List<string> usersList = new List<string>();
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
+            GroupPrincipal group = GroupPrincipal.FindByIdentity(principalContext, groupName);
+            if (group != null)
+            {
+                foreach (Principal p in group.GetMembers(true))
+                {
+                    usersList.Add(p.SamAccountName);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong with the AD search...");
+            }
+            bool chosenOne = false;
+            foreach (var users in usersList)
+            {
+                if (users.ToUpper() == user)
+                {
+                    chosenOne = true;
+                }
+            }
+            if (!chosenOne)
+            {
+                MessageBox.Show("YOU ARE NOT THE CHOSEN ONE!");
+                Environment.Exit(1);
+            }
+            else if(chosenOne)
+            {
+                MessageBox.Show("YOU ARE THE CHOSEN ONE!");
+            }
         }
         void CheckStatus()
         {
@@ -151,103 +179,84 @@ namespace WindowsFormsApplication1
             this.button1.Enabled = false;
             CheckStatus();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(2);
             this.button2.Enabled = false;
             CheckStatus();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(3);
             this.button3.Enabled = false;
             CheckStatus();
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(4);
             this.button4.Enabled = false;
             CheckStatus();
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(5);
             this.button5.Enabled = false;
             CheckStatus();
         }
-
         private void button6_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(6);
             this.button6.Enabled = false;
             CheckStatus();
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(7);
             this.button7.Enabled = false;
             CheckStatus();
         }
-
         private void button8_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(8);
             this.button8.Enabled = false;
             CheckStatus();
         }
-
         private void button9_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(9);
             this.button9.Enabled = false;
             CheckStatus();
         }
-
         private void button10_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(10);
             this.button10.Enabled = false;
             CheckStatus();
         }
-
         private void button11_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(11);
             this.button11.Enabled = false;
             CheckStatus();
         }
-
         private void button12_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(12);
             this.button12.Enabled = false;
             CheckStatus();
         }
-
         private void button13_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(13);
             this.button13.Enabled = false;
             CheckStatus();
         }
-
         private void button14_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(14);
             this.button14.Enabled = false;
             CheckStatus();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void label8_Click(object sender, EventArgs e)
         {
 
