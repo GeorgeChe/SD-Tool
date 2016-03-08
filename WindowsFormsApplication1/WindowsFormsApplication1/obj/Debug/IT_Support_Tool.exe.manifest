@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="199600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="202160">
       <assemblyIdentity name="IT_Support_Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yE2uFmPvKSIfLVyVwMM89ggzpBUJ4wDsNu/Q6JG4Z1o=</dsig:DigestValue>
+        <dsig:DigestValue>JXhBNqSOdXGfj4r73ucEMgyxs+AJgtDZ8GfB2+WUJj0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -63,13 +63,13 @@
       <dsig:DigestValue>5V56+dqU9KZws6Bsx5HmPLumdXPspeuOn0quqih3oAg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="IT_Support_Tool.exe.config" size="184">
+  <file name="IT_Support_Tool.exe.config" size="178">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>YyXx11OQ8Y9qQaMsAPfgWQIUIJMPT4Sw3i2UQTU2sRM=</dsig:DigestValue>
+      <dsig:DigestValue>99quqBP3LkKA5r/eDtx+5/BU6wUiADC+z31EUEMtKSc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="LoadingCircle.gif" size="2608">
@@ -81,22 +81,22 @@
       <dsig:DigestValue>YNDxAs+WVjTHXRZAssN3UwLklfILhMGLVldiWeONiPc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="MachineInfo.psm1" size="47659">
+  <file name="MachineInfo.psm1" size="46485">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ZCifxv1sm2iLJ3hIUQiBP76O04TO30EGD8jWgWfN+uA=</dsig:DigestValue>
+      <dsig:DigestValue>SBSKFG+cMqiSy7rHp/bL7ssMV8UfLOn+shT/GOb0jWc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TODO_List.txt" size="644">
+  <file name="TODO_List.txt" size="732">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2lQeBt2eznD5Jd8bc85Oj/zfHf268ZKjAoMngmkKCKs=</dsig:DigestValue>
+      <dsig:DigestValue>G/57KA9fIzkQPThlEKvn0uUocGIA5pvooOpYDzfQmqk=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

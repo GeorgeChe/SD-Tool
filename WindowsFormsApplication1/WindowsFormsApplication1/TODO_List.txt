@@ -1,9 +1,10 @@
 ﻿1. Create User and Machine Tabs (George) -------------------------------------- Done
 2. Create User tab elements (George) ------------------------------------------ Done
-3. Integrate AD powershell script with C# (Liviu)---------------donno wtf is this?!?
+3. Integrate AD powershell script with C# (Liviu)-------------------------------Done
 4. Create ToolBar + status bar (George) --------------------------------------- Done
 5. Create authentication method (only we can log in - Liviu)------------------- Done
 6. Show logged user in title bar (Liviu)--------------------------------------- Done
-7. Add external tools to the Menu Strip (Liviu)--------------------------say what?!?
-
+7. Add external tools(cmd/powershell/regedit/compmgmt.msc/dev.mgmt.msc/) to the Menu Strip (Liviu)--------------------------say what?!?
+8. New tab to run custom powershell commands
+9.handle user null exception!
 That's all I can think about for now.

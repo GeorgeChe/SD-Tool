@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.DirectoryServices.AccountManagement;
 using System.Collections.Generic;
+using System.DirectoryServices;
 
 namespace WindowsFormsApplication1
 {
@@ -17,7 +18,7 @@ namespace WindowsFormsApplication1
         public SD()
         {
             InitializeComponent();
-            loggedUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name; // Get the user id logged on the machine
+            loggedUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToUpper(); // Get the user id logged on the machine
             CheckUser(loggedUser);
             this.Text += " " + loggedUser;
         }
@@ -37,7 +38,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                MessageBox.Show("Something went wrong with the AD search...");
+                MessageBox.Show("Something went wrong with the AD search!");
             }
             bool chosenOne = false;
             foreach (var users in usersList)
@@ -263,6 +264,69 @@ namespace WindowsFormsApplication1
         }
 
         private void User_Tab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string SamAccountName = user_box.Text;
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
+            UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+            DirectoryEntry dEntry = (DirectoryEntry)user.GetUnderlyingObject();
+            if (user != null)
+            {
+                display_name_box.Text = user.DisplayName;
+                description_box.Text = user.Description;
+                office_box.Text = dEntry.Properties["physicalDeliveryOfficeName"].Value.ToString();
+                string manager = dEntry.Properties["manager"].Value.ToString();
+                int Length = manager.IndexOf(',');
+                manager_box.Text = manager.Substring(3, Length - 3);
+                home_drive_box.Text = dEntry.Properties["homeDirectory"].Value.ToString();
+                last_logon_box.Text = user.LastLogon.ToString();
+                bool isLockedOut = user.IsAccountLockedOut();
+                if (isLockedOut)
+                {
+                    lockout_status_box.Text = "Account Locked!";
+                    var lockedout = user.AccountLockoutTime;
+                    DateTime temps1 = lockedout.Value;
+                    TimeSpan temps = DateTime.Now.Subtract(temps1);
+                    lockout_time_box.Text = temps1.Day.ToString()+ " days, " + temps1.Hour.ToString() + " hours, " + temps1.Minute.ToString() + " minutes.";
+                }
+                else
+                {
+                    lockout_status_box.Text = "Account Not Locked!";
+                    lockout_time_box.Text = string.Empty;
+                }
+
+                if(user.Enabled == true)// Check if account is enabled
+                {
+                    account_status_box.Text = "Account enabled!";
+                }
+                else
+                {
+                    account_status_box.Text = "Account disabled!";
+                }
+                password_box.Text = user.LastPasswordSet.ToString();
+                creation_date_box.Text = dEntry.Properties["whenCreated"].Value.ToString();
+                last_modified_box.Text = dEntry.Properties["whenChanged"].Value.ToString();
+                ad_path_box.Text = user.DistinguishedName;
+                //MemberOf ComboBox
+                //int groupsNo = dEntry.Properties["memberOf"].Count;
+                List<string> groups = new List<string>();
+                foreach (GroupPrincipal group in user.GetGroups())
+                {
+                    groups.Add(group.ToString());
+                }
+                memberof_comboBox.Items.Clear();
+                memberof_comboBox.Items.Insert(0, "- Press dropdown to see - ");
+                memberof_comboBox.Items.AddRange(groups.ToArray());
+                memberof_comboBox.SelectedIndex = 0;
+            }
+
+        }
+
+        private void lockout_time_box_TextChanged(object sender, EventArgs e)
         {
 
         }
