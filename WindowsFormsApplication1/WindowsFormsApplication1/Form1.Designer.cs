@@ -491,6 +491,7 @@
             this.button15.TabIndex = 30;
             this.button15.Text = "Get-User";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // memberof_comboBox
             // 
@@ -552,8 +553,9 @@
             this.lockout_time_box.Location = new System.Drawing.Point(223, 330);
             this.lockout_time_box.Name = "lockout_time_box";
             this.lockout_time_box.ReadOnly = true;
-            this.lockout_time_box.Size = new System.Drawing.Size(222, 23);
+            this.lockout_time_box.Size = new System.Drawing.Size(395, 23);
             this.lockout_time_box.TabIndex = 23;
+            this.lockout_time_box.TextChanged += new System.EventHandler(this.lockout_time_box_TextChanged);
             // 
             // lockout_status_box
             // 
@@ -807,7 +809,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem

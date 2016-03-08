@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="199600">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="202160">
       <assemblyIdentity name="IT_Support_Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Y3YPzfABewTqD/AXhIhLRY0IdVd0OMLGT8FFQiS4hkU=</dsig:DigestValue>
+        <dsig:DigestValue>JXhBNqSOdXGfj4r73ucEMgyxs+AJgtDZ8GfB2+WUJj0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,13 +90,13 @@
       <dsig:DigestValue>SBSKFG+cMqiSy7rHp/bL7ssMV8UfLOn+shT/GOb0jWc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TODO_List.txt" size="636">
+  <file name="TODO_List.txt" size="732">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>/VpZIbfmAABWaKrCyzEUziIrhoFJzikctgEUNnix9zo=</dsig:DigestValue>
+      <dsig:DigestValue>G/57KA9fIzkQPThlEKvn0uUocGIA5pvooOpYDzfQmqk=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
