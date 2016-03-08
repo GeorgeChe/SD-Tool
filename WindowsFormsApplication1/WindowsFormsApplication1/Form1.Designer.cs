@@ -334,6 +334,7 @@
             this.textBox2.Size = new System.Drawing.Size(224, 31);
             this.textBox2.TabIndex = 2;
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyDown);
             // 
             // button14
             // 
@@ -555,7 +556,6 @@
             this.lockout_time_box.ReadOnly = true;
             this.lockout_time_box.Size = new System.Drawing.Size(395, 23);
             this.lockout_time_box.TabIndex = 23;
-            this.lockout_time_box.TextChanged += new System.EventHandler(this.lockout_time_box_TextChanged);
             // 
             // lockout_status_box
             // 
@@ -621,11 +621,13 @@
             // 
             // user_box
             // 
+            this.user_box.AcceptsReturn = true;
             this.user_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.user_box.Location = new System.Drawing.Point(223, 10);
             this.user_box.Name = "user_box";
             this.user_box.Size = new System.Drawing.Size(222, 23);
             this.user_box.TabIndex = 15;
+            this.user_box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.user_box_KeyDown);
             // 
             // label15
             // 

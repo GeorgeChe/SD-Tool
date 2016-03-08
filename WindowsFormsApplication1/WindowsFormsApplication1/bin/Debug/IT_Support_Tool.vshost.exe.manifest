@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JXhBNqSOdXGfj4r73ucEMgyxs+AJgtDZ8GfB2+WUJj0=</dsig:DigestValue>
+        <dsig:DigestValue>ZAic2AnOdFg+6mZDdqxC/87UbpJoGUTS3cAaYh6uAnc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,13 +90,13 @@
       <dsig:DigestValue>SBSKFG+cMqiSy7rHp/bL7ssMV8UfLOn+shT/GOb0jWc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TODO_List.txt" size="732">
+  <file name="TODO_List.txt" size="765">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>G/57KA9fIzkQPThlEKvn0uUocGIA5pvooOpYDzfQmqk=</dsig:DigestValue>
+      <dsig:DigestValue>RueZ3JbCH8G3MpgAFaxxxR+H4ucBuKyncq0fd4Jx8Ec=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

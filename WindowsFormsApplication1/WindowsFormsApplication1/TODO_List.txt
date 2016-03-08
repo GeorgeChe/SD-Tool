@@ -6,5 +6,8 @@
 6. Show logged user in title bar (Liviu)--------------------------------------- Done
 7. Add external tools(cmd/powershell/regedit/compmgmt.msc/dev.mgmt.msc/) to the Menu Strip (Liviu)--------------------------say what?!?
 8. New tab to run custom powershell commands
-9.handle user null exception!
+9. Handle user null exception!
+
+
+
 That's all I can think about for now.

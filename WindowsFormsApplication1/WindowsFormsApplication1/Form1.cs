@@ -287,11 +287,9 @@ namespace WindowsFormsApplication1
                 bool isLockedOut = user.IsAccountLockedOut();
                 if (isLockedOut)
                 {
-                    lockout_status_box.Text = "Account Locked!";
-                    var lockedout = user.AccountLockoutTime;
-                    DateTime temps1 = lockedout.Value;
-                    TimeSpan temps = DateTime.Now.Subtract(temps1);
-                    lockout_time_box.Text = temps1.Day.ToString()+ " days, " + temps1.Hour.ToString() + " hours, " + temps1.Minute.ToString() + " minutes.";
+                    DateTime lockedout = user.AccountLockoutTime.Value;
+                    TimeSpan temps = DateTime.Now.Subtract(lockedout);
+                    lockout_time_box.Text = temps.Days.ToString() + " days " + temps.Hours.ToString() + " hours, " + temps.Minutes.ToString() + " minutes.";
                 }
                 else
                 {
@@ -307,7 +305,11 @@ namespace WindowsFormsApplication1
                 {
                     account_status_box.Text = "Account disabled!";
                 }
-                password_box.Text = user.LastPasswordSet.ToString();
+                   DateTime tmp = user.LastPasswordSet.Value;
+                   TimeSpan tmps = DateTime.Now.Subtract(tmp);
+                   password_box.Text = tmps.Days.ToString()+" days " + tmps.Hours.ToString() + " hours, " + tmps.Minutes.ToString() + " minutes.";
+
+                // sa-ti arate cate zile au trecut decand s-a schimbat parola!!!
                 creation_date_box.Text = dEntry.Properties["whenCreated"].Value.ToString();
                 last_modified_box.Text = dEntry.Properties["whenChanged"].Value.ToString();
                 ad_path_box.Text = user.DistinguishedName;
@@ -326,9 +328,20 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void lockout_time_box_TextChanged(object sender, EventArgs e)
+        private void user_box_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button15_Click(this, new EventArgs());
+            }
+        }
 
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button14_Click(this, new EventArgs());
+            }
         }
     }
 }
