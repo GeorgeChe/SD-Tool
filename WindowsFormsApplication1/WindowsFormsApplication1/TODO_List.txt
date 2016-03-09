@@ -7,6 +7,9 @@
 7. Add external tools(cmd/powershell/regedit/compmgmt.msc/dev.mgmt.msc/) to the Menu Strip (Liviu)----Done
 8. New tab to run custom powershell commands
 9. Handle user null exception!
+10. Add get IP address that pings from all of the DC's (Liviu) ----------------
+11. Implement get Tag Details (Liviu) -----------------------------------------
+
 
 
 
