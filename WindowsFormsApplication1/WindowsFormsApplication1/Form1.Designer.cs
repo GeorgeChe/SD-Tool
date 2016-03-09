@@ -91,19 +91,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Machine_Tab = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.ps_output_tb = new System.Windows.Forms.RichTextBox();
+            this.ps_input_tb = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label17 = new System.Windows.Forms.Label();
             this.externalToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.powerShellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regeditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.computerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deviceManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.ps_input_tb = new System.Windows.Forms.RichTextBox();
-            this.ps_output_tb = new System.Windows.Forms.RichTextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.unlockAccountBtn = new System.Windows.Forms.Button();
+            this.getIPAddrBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -112,8 +114,8 @@
             this.tabControl2.SuspendLayout();
             this.User_Tab.SuspendLayout();
             this.Machine_Tab.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -376,6 +378,8 @@
             // 
             // User_Tab
             // 
+            this.User_Tab.Controls.Add(this.getIPAddrBtn);
+            this.User_Tab.Controls.Add(this.unlockAccountBtn);
             this.User_Tab.Controls.Add(this.current_dc_lbl);
             this.User_Tab.Controls.Add(this.dc_comboBox);
             this.User_Tab.Controls.Add(this.label16);
@@ -806,6 +810,35 @@
             this.Machine_Tab.Text = "Machine";
             this.Machine_Tab.UseVisualStyleBackColor = true;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.ps_output_tb);
+            this.tabPage4.Controls.Add(this.ps_input_tb);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1053, 626);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "PowerShell";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // ps_output_tb
+            // 
+            this.ps_output_tb.Location = new System.Drawing.Point(6, 458);
+            this.ps_output_tb.Name = "ps_output_tb";
+            this.ps_output_tb.ReadOnly = true;
+            this.ps_output_tb.Size = new System.Drawing.Size(1039, 155);
+            this.ps_output_tb.TabIndex = 1;
+            this.ps_output_tb.Text = "";
+            // 
+            // ps_input_tb
+            // 
+            this.ps_input_tb.Location = new System.Drawing.Point(6, 4);
+            this.ps_input_tb.Name = "ps_input_tb";
+            this.ps_input_tb.Size = new System.Drawing.Size(1039, 448);
+            this.ps_input_tb.TabIndex = 0;
+            this.ps_input_tb.Text = "";
+            this.ps_input_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ps_input_tb_KeyDown);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -823,14 +856,61 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            // 
+            // externalToolsToolStripMenuItem
+            // 
+            this.externalToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmdToolStripMenuItem,
+            this.powerShellToolStripMenuItem,
+            this.regeditToolStripMenuItem,
+            this.computerManagementToolStripMenuItem,
+            this.deviceManagerToolStripMenuItem});
+            this.externalToolsToolStripMenuItem.Name = "externalToolsToolStripMenuItem";
+            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.externalToolsToolStripMenuItem.Text = "External Tools";
+            // 
+            // cmdToolStripMenuItem
+            // 
+            this.cmdToolStripMenuItem.Name = "cmdToolStripMenuItem";
+            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.cmdToolStripMenuItem.Text = "Cmd";
+            this.cmdToolStripMenuItem.Click += new System.EventHandler(this.cmdToolStripMenuItem_Click);
+            // 
+            // powerShellToolStripMenuItem
+            // 
+            this.powerShellToolStripMenuItem.Name = "powerShellToolStripMenuItem";
+            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.powerShellToolStripMenuItem.Text = "PowerShell";
+            this.powerShellToolStripMenuItem.Click += new System.EventHandler(this.powerShellToolStripMenuItem_Click);
+            // 
+            // regeditToolStripMenuItem
+            // 
+            this.regeditToolStripMenuItem.Name = "regeditToolStripMenuItem";
+            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.regeditToolStripMenuItem.Text = "Regedit";
+            this.regeditToolStripMenuItem.Click += new System.EventHandler(this.regeditToolStripMenuItem_Click);
+            // 
+            // computerManagementToolStripMenuItem
+            // 
+            this.computerManagementToolStripMenuItem.Name = "computerManagementToolStripMenuItem";
+            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.computerManagementToolStripMenuItem.Text = "Computer Management";
+            this.computerManagementToolStripMenuItem.Click += new System.EventHandler(this.computerManagementToolStripMenuItem_Click);
+            // 
+            // deviceManagerToolStripMenuItem
+            // 
+            this.deviceManagerToolStripMenuItem.Name = "deviceManagerToolStripMenuItem";
+            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.deviceManagerToolStripMenuItem.Text = "Device Manager";
+            this.deviceManagerToolStripMenuItem.Click += new System.EventHandler(this.deviceManagerToolStripMenuItem_Click);
             // 
             // label17
             // 
@@ -842,81 +922,25 @@
             this.label17.TabIndex = 7;
             this.label17.Text = "Ready!";
             // 
-            // externalToolsToolStripMenuItem
+            // unlockAccountBtn
             // 
-            this.externalToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmdToolStripMenuItem,
-            this.powerShellToolStripMenuItem,
-            this.regeditToolStripMenuItem,
-            this.computerManagementToolStripMenuItem,
-            this.deviceManagerToolStripMenuItem});
-            this.externalToolsToolStripMenuItem.Name = "externalToolsToolStripMenuItem";
-            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
-            this.externalToolsToolStripMenuItem.Text = "External Tools";
+            this.unlockAccountBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.unlockAccountBtn.Location = new System.Drawing.Point(451, 290);
+            this.unlockAccountBtn.Name = "unlockAccountBtn";
+            this.unlockAccountBtn.Size = new System.Drawing.Size(167, 23);
+            this.unlockAccountBtn.TabIndex = 38;
+            this.unlockAccountBtn.Text = "Unlock Account";
+            this.unlockAccountBtn.UseVisualStyleBackColor = true;
             // 
-            // cmdToolStripMenuItem
+            // getIPAddrBtn
             // 
-            this.cmdToolStripMenuItem.Name = "cmdToolStripMenuItem";
-            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.cmdToolStripMenuItem.Text = "Cmd";
-            this.cmdToolStripMenuItem.Click += new System.EventHandler(this.cmdToolStripMenuItem_Click);
-            // 
-            // powerShellToolStripMenuItem
-            // 
-            this.powerShellToolStripMenuItem.Name = "powerShellToolStripMenuItem";
-            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.powerShellToolStripMenuItem.Text = "PowerShell";
-            this.powerShellToolStripMenuItem.Click += new System.EventHandler(this.powerShellToolStripMenuItem_Click);
-            // 
-            // regeditToolStripMenuItem
-            // 
-            this.regeditToolStripMenuItem.Name = "regeditToolStripMenuItem";
-            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.regeditToolStripMenuItem.Text = "Regedit";
-            this.regeditToolStripMenuItem.Click += new System.EventHandler(this.regeditToolStripMenuItem_Click);
-            // 
-            // computerManagementToolStripMenuItem
-            // 
-            this.computerManagementToolStripMenuItem.Name = "computerManagementToolStripMenuItem";
-            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.computerManagementToolStripMenuItem.Text = "Computer Management";
-            this.computerManagementToolStripMenuItem.Click += new System.EventHandler(this.computerManagementToolStripMenuItem_Click);
-            // 
-            // deviceManagerToolStripMenuItem
-            // 
-            this.deviceManagerToolStripMenuItem.Name = "deviceManagerToolStripMenuItem";
-            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.deviceManagerToolStripMenuItem.Text = "Device Manager";
-            this.deviceManagerToolStripMenuItem.Click += new System.EventHandler(this.deviceManagerToolStripMenuItem_Click);
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.ps_output_tb);
-            this.tabPage4.Controls.Add(this.ps_input_tb);
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1053, 626);
-            this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "PowerShell";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // ps_input_tb
-            // 
-            this.ps_input_tb.Location = new System.Drawing.Point(6, 4);
-            this.ps_input_tb.Name = "ps_input_tb";
-            this.ps_input_tb.Size = new System.Drawing.Size(1039, 448);
-            this.ps_input_tb.TabIndex = 0;
-            this.ps_input_tb.Text = "";
-            this.ps_input_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ps_input_tb_KeyDown);
-            // 
-            // ps_output_tb
-            // 
-            this.ps_output_tb.Location = new System.Drawing.Point(6, 458);
-            this.ps_output_tb.Name = "ps_output_tb";
-            this.ps_output_tb.ReadOnly = true;
-            this.ps_output_tb.Size = new System.Drawing.Size(1039, 155);
-            this.ps_output_tb.TabIndex = 1;
-            this.ps_output_tb.Text = "";
+            this.getIPAddrBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.getIPAddrBtn.Location = new System.Drawing.Point(819, 530);
+            this.getIPAddrBtn.Name = "getIPAddrBtn";
+            this.getIPAddrBtn.Size = new System.Drawing.Size(167, 23);
+            this.getIPAddrBtn.TabIndex = 39;
+            this.getIPAddrBtn.Text = "Get IP Address";
+            this.getIPAddrBtn.UseVisualStyleBackColor = true;
             // 
             // SD
             // 
@@ -942,9 +966,9 @@
             this.User_Tab.PerformLayout();
             this.Machine_Tab.ResumeLayout(false);
             this.Machine_Tab.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1027,6 +1051,8 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.RichTextBox ps_output_tb;
         private System.Windows.Forms.RichTextBox ps_input_tb;
+        private System.Windows.Forms.Button getIPAddrBtn;
+        private System.Windows.Forms.Button unlockAccountBtn;
     }
 }
 
