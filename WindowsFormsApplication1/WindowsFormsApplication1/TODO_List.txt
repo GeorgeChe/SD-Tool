@@ -4,7 +4,7 @@
 4. Create ToolBar + status bar (George) --------------------------------------- Done
 5. Create authentication method (only we can log in - Liviu)------------------- Done
 6. Show logged user in title bar (Liviu)--------------------------------------- Done
-7. Add external tools(cmd/powershell/regedit/compmgmt.msc/dev.mgmt.msc/) to the Menu Strip (Liviu)--------------------------say what?!?
+7. Add external tools(cmd/powershell/regedit/compmgmt.msc/dev.mgmt.msc/) to the Menu Strip (Liviu)----Done
 8. New tab to run custom powershell commands
 9. Handle user null exception!
 

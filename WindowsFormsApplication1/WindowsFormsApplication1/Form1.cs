@@ -172,6 +172,10 @@ namespace WindowsFormsApplication1
                     ReturnText(text);
                     this.button14.Enabled = true;
                     break;
+                case 15:
+                    string output = await Task.Run(() => RunPowerShell(ps_input_tb.Text));
+                    ps_output_tb.Text = output;
+                    break;
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -262,12 +266,10 @@ namespace WindowsFormsApplication1
         {
 
         }
-
         private void User_Tab_Click(object sender, EventArgs e)
         {
 
         }
-
         private void button15_Click(object sender, EventArgs e)
         {
             string SamAccountName = user_box.Text;
@@ -327,7 +329,6 @@ namespace WindowsFormsApplication1
             }
 
         }
-
         private void user_box_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -335,12 +336,66 @@ namespace WindowsFormsApplication1
                 button15_Click(this, new EventArgs());
             }
         }
-
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 button14_Click(this, new EventArgs());
+            }
+        }
+
+        private void cmdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.WorkingDirectory = @"C:\";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void regeditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "regedit.exe";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void powerShellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "powershell.exe";
+            startInfo.WorkingDirectory = @"C:\";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void computerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "compmgmt.msc";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void deviceManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "devmgmt.msc";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
+        private void ps_input_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MakeTheWorldBurnAsync(15);
             }
         }
     }

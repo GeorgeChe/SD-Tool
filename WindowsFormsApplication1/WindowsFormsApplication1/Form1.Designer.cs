@@ -95,6 +95,15 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label17 = new System.Windows.Forms.Label();
+            this.externalToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.powerShellToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regeditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.computerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deviceManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.ps_input_tb = new System.Windows.Forms.RichTextBox();
+            this.ps_output_tb = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -104,6 +113,7 @@
             this.User_Tab.SuspendLayout();
             this.Machine_Tab.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -356,6 +366,7 @@
             this.tabControl2.Appearance = System.Windows.Forms.TabAppearance.Buttons;
             this.tabControl2.Controls.Add(this.User_Tab);
             this.tabControl2.Controls.Add(this.Machine_Tab);
+            this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl2.Location = new System.Drawing.Point(0, 27);
             this.tabControl2.Name = "tabControl2";
@@ -798,7 +809,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.externalToolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -817,7 +829,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // label17
@@ -829,6 +841,82 @@
             this.label17.Size = new System.Drawing.Size(68, 16);
             this.label17.TabIndex = 7;
             this.label17.Text = "Ready!";
+            // 
+            // externalToolsToolStripMenuItem
+            // 
+            this.externalToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmdToolStripMenuItem,
+            this.powerShellToolStripMenuItem,
+            this.regeditToolStripMenuItem,
+            this.computerManagementToolStripMenuItem,
+            this.deviceManagerToolStripMenuItem});
+            this.externalToolsToolStripMenuItem.Name = "externalToolsToolStripMenuItem";
+            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.externalToolsToolStripMenuItem.Text = "External Tools";
+            // 
+            // cmdToolStripMenuItem
+            // 
+            this.cmdToolStripMenuItem.Name = "cmdToolStripMenuItem";
+            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.cmdToolStripMenuItem.Text = "Cmd";
+            this.cmdToolStripMenuItem.Click += new System.EventHandler(this.cmdToolStripMenuItem_Click);
+            // 
+            // powerShellToolStripMenuItem
+            // 
+            this.powerShellToolStripMenuItem.Name = "powerShellToolStripMenuItem";
+            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.powerShellToolStripMenuItem.Text = "PowerShell";
+            this.powerShellToolStripMenuItem.Click += new System.EventHandler(this.powerShellToolStripMenuItem_Click);
+            // 
+            // regeditToolStripMenuItem
+            // 
+            this.regeditToolStripMenuItem.Name = "regeditToolStripMenuItem";
+            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.regeditToolStripMenuItem.Text = "Regedit";
+            this.regeditToolStripMenuItem.Click += new System.EventHandler(this.regeditToolStripMenuItem_Click);
+            // 
+            // computerManagementToolStripMenuItem
+            // 
+            this.computerManagementToolStripMenuItem.Name = "computerManagementToolStripMenuItem";
+            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.computerManagementToolStripMenuItem.Text = "Computer Management";
+            this.computerManagementToolStripMenuItem.Click += new System.EventHandler(this.computerManagementToolStripMenuItem_Click);
+            // 
+            // deviceManagerToolStripMenuItem
+            // 
+            this.deviceManagerToolStripMenuItem.Name = "deviceManagerToolStripMenuItem";
+            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.deviceManagerToolStripMenuItem.Text = "Device Manager";
+            this.deviceManagerToolStripMenuItem.Click += new System.EventHandler(this.deviceManagerToolStripMenuItem_Click);
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.ps_output_tb);
+            this.tabPage4.Controls.Add(this.ps_input_tb);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1053, 626);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "PowerShell";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // ps_input_tb
+            // 
+            this.ps_input_tb.Location = new System.Drawing.Point(6, 4);
+            this.ps_input_tb.Name = "ps_input_tb";
+            this.ps_input_tb.Size = new System.Drawing.Size(1039, 448);
+            this.ps_input_tb.TabIndex = 0;
+            this.ps_input_tb.Text = "";
+            this.ps_input_tb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ps_input_tb_KeyDown);
+            // 
+            // ps_output_tb
+            // 
+            this.ps_output_tb.Location = new System.Drawing.Point(6, 458);
+            this.ps_output_tb.Name = "ps_output_tb";
+            this.ps_output_tb.ReadOnly = true;
+            this.ps_output_tb.Size = new System.Drawing.Size(1039, 155);
+            this.ps_output_tb.TabIndex = 1;
+            this.ps_output_tb.Text = "";
             // 
             // SD
             // 
@@ -856,6 +944,7 @@
             this.Machine_Tab.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -929,6 +1018,15 @@
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ToolStripMenuItem externalToolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cmdToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem powerShellToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regeditToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem computerManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deviceManagerToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.RichTextBox ps_output_tb;
+        private System.Windows.Forms.RichTextBox ps_input_tb;
     }
 }
 
