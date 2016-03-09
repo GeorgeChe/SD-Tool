@@ -15,7 +15,7 @@
 	$logon=Get-WmiObject Win32_NetworkLoginProfile -ComputerName $computer | select name,logonserver | ft -AutoSize
 	$logon
 	} - can be used to find what users authenticated on that machine.
-
+14. Add unlock account button, create link to b2b unlock function to shorten the time it takes
 
 
 That's all I can think about for now.
