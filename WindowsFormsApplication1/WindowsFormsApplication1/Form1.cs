@@ -275,7 +275,16 @@ namespace WindowsFormsApplication1
             string SamAccountName = user_box.Text;
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
-            DirectoryEntry dEntry = (DirectoryEntry)user.GetUnderlyingObject();
+            DirectoryEntry dEntry = new DirectoryEntry();
+            if(user == null)
+                {
+                description_box.Text = "Wrong user or user doesn't exist!";
+                
+                }
+            else
+            {
+                dEntry = (DirectoryEntry)user.GetUnderlyingObject();
+            }
             if (user != null)
             {
                 display_name_box.Text = user.DisplayName;
@@ -327,8 +336,7 @@ namespace WindowsFormsApplication1
                 memberof_comboBox.Items.AddRange(groups.ToArray());
                 memberof_comboBox.SelectedIndex = 0;
             }
-
-        }
+       }
         private void user_box_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -390,7 +398,7 @@ namespace WindowsFormsApplication1
             process.StartInfo = startInfo;
             process.Start();
         }
-
+        // to work on this 
         private void ps_input_tb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

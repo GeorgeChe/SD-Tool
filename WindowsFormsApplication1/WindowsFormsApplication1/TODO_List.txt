@@ -5,9 +5,9 @@
 5. Create authentication method (only we can log in - Liviu)------------------- Done
 6. Show logged user in title bar (Liviu)--------------------------------------- Done
 7. Add external tools(cmd/powershell/regedit/compmgmt.msc/dev.mgmt.msc/) to the Menu Strip (Liviu)----Done
-8. New tab to run custom powershell commands
-9. Handle user null exception!
-10. Add get IP address that pings from all of the DC's (Liviu) ----------------
+8. New tab to run custom powershell commands(Liviu)---------------------------- Done
+9. Handle user null exception without using try/catch block!(Liviu)------------ Done
+10. Add get IP address that pings from all of the DC's (Liviu) ---------------- 
 11. Implement get Tag Details (Liviu) -----------------------------------------
 12. nltest /sc_query:sch.com  /server:TAG-number (can be used to find the DC that auth the machine)
 13. function get-logonserver {
