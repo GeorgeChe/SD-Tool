@@ -9,7 +9,12 @@
 9. Handle user null exception!
 10. Add get IP address that pings from all of the DC's (Liviu) ----------------
 11. Implement get Tag Details (Liviu) -----------------------------------------
-
+12. nltest /sc_query:sch.com  /server:TAG-number (can be used to find the DC that auth the machine)
+13. function get-logonserver {
+	$computer = read-host "Enterservername"
+	$logon=Get-WmiObject Win32_NetworkLoginProfile -ComputerName $computer | select name,logonserver | ft -AutoSize
+	$logon
+	} - can be used to find what users authenticated on that machine.
 
 
 
