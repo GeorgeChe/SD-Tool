@@ -10,16 +10,23 @@ using System.Net;
 
 namespace WindowsFormsApplication1
 {
-    public partial class GetIpAddress : Form 
+    public partial class GetIpAddress : Form
     {
-        string[,] DC_IPs = new string[30, 30];
+        public GetIpAddress()
+        {
+            InitializeComponent();
+            GetListOfDomainControllers();
+        }
+        string[,] DC_IPs = new string[30, 2];
         Domain domain = Domain.GetCurrentDomain();
         int i = 0;
         private void GetListOfDomainControllers()
         {
             foreach (DomainController dc in domain.FindAllDiscoverableDomainControllers())
             {
-                DC_IPs[i, 0] = dc.Name;
+                string temp = dc.Name.ToUpper();
+                int length = temp.IndexOf(".");
+                DC_IPs[i, 0] = dc.Name.ToUpper().Substring(0, length);
                 DC_IPs[i, 1] = dc.IPAddress;
                 i++;
             }
@@ -30,11 +37,8 @@ namespace WindowsFormsApplication1
             try
             {
                 var Options = new JHSoftware.DnsClient.RequestOptions();
-                Options.DnsServers = new System.Net.IPAddress[] {
-                    System.Net.IPAddress.Parse(DC_IPs[DCno, 1]),
-                    };
-                var IPs = JHSoftware.DnsClient.LookupHost(tagno + ".sch.com",
-                                                          JHSoftware.DnsClient.IPVersion.IPv4, Options);
+                Options.DnsServers = new IPAddress[] {IPAddress.Parse(DC_IPs[DCno, 1])};
+                var IPs = JHSoftware.DnsClient.LookupHost(tagno + ".sch.com",JHSoftware.DnsClient.IPVersion.IPv4, Options);
                 foreach (var IP in IPs)
                 {
                     Ping pingSender = new Ping();
@@ -58,6 +62,56 @@ namespace WindowsFormsApplication1
             }
 
             return toReturn;
+        }
+        private void GO()
+        {
+            ResultsrichTextBox.Clear();
+            ResultsrichTextBox.AppendText("Domain Controller\tIP Address\tPing Reply?\n\n");
+            bool ok = true;
+            string tag = string.Empty;
+            int tagno;
+            if (tagNOtextBox.Text == string.Empty || tagNOtextBox.Text == null)
+            {
+                MessageBox.Show("Tag no field is empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ok = false;
+            }
+            else if (int.TryParse(tagNOtextBox.Text, out tagno))
+                if (tagno > 1000 && tagno < 99999)
+                    tag = "tag-" + tagno.ToString(); //userul a introdus doar cifre
+                else
+                {
+                    MessageBox.Show("Tag no not in correct range", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ok = false;
+                }
+            else if (!(tagNOtextBox.Text.Length > 7) || !(tagNOtextBox.Text.Substring(0, 4).ToLower() == "tag-"))
+            {
+                MessageBox.Show("Tag no is incorrect", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ok = false;
+            }
+            else
+                tag = tagNOtextBox.Text;
+
+            if (ok)
+            {
+                //testing on JH to see if we get error. if we do, most likely the machine doesn;t have an ip allocated.
+                string test = getIPfromspecificDCs(tag, 0);
+                if (test == string.Empty || test == null)
+                    MessageBox.Show("TAG might not have an IP allocated or not on domain!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    ResultsrichTextBox.AppendText(getIPfromspecificDCs(tag, 0));
+                    for (int i = 1; i < 22; i++)
+                        ResultsrichTextBox.AppendText(getIPfromspecificDCs(tag, i));
+                }
+            }
+        }
+
+        private void tagNOtextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GO();
+            }
         }
     }
 }

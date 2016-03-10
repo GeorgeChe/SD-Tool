@@ -278,8 +278,7 @@ namespace WindowsFormsApplication1
             DirectoryEntry dEntry = new DirectoryEntry();
             if(user == null)
                 {
-                description_box.Text = "Wrong user or user doesn't exist!";
-                
+                description_box.Text = "Wrong user or user doesn't exist!";  
                 }
             else
             {
@@ -405,6 +404,12 @@ namespace WindowsFormsApplication1
             {
                 MakeTheWorldBurnAsync(15);
             }
+        }
+
+        private void getIPAddrBtn_Click(object sender, EventArgs e)
+        {
+            GetIpAddress form = new GetIpAddress();
+            form.Show(); // or form.ShowDialog(this);
         }
     }
 }

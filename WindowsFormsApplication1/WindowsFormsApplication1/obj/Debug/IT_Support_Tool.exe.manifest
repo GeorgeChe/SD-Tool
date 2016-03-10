@@ -43,14 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="205744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="209840">
       <assemblyIdentity name="IT_Support_Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oHy1ettc9k2SxE17zAQDZ8hRaV9kFwSbxA0i1AvIq+U=</dsig:DigestValue>
+        <dsig:DigestValue>HFSnkFeuyEVxwXz3PDJFmdEVYOF7wakE+DYDTz0Z/u8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="JHSoftware.DnsClient.dll" size="173056">
+      <assemblyIdentity name="JHSoftware.DnsClient" version="1.0.1.0" publicKeyToken="3EACD9F3DBC38099" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>qLUSmXFHTQdj5R0AyrwNrdRz0dC0R10GAQqvTS/NYkI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -90,13 +102,13 @@
       <dsig:DigestValue>SBSKFG+cMqiSy7rHp/bL7ssMV8UfLOn+shT/GOb0jWc=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TODO_List.txt" size="1296">
+  <file name="TODO_List.txt" size="1450">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>beVSudcmL0dH1ZfGP23l5L3hbquM7b2Wtb3eQwtmz+8=</dsig:DigestValue>
+      <dsig:DigestValue>3PehE7zftWa94HaTcYlfFvcEh5Mii0WofuOa4z/dg0s=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

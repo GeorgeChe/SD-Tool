@@ -64,4 +64,6 @@ C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\IT_S
 C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\IT_Support_Tool.application
 C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\IT_Support_Tool.exe
 C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\IT_Support_Tool.pdb
+C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\JHSoftware.DnsClient.dll
+C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.GetIpAddress.resources
 C:\TEMP\SD-Tool\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache

@@ -52,6 +52,8 @@
             this.button14 = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.User_Tab = new System.Windows.Forms.TabPage();
+            this.getIPAddrBtn = new System.Windows.Forms.Button();
+            this.unlockAccountBtn = new System.Windows.Forms.Button();
             this.current_dc_lbl = new System.Windows.Forms.Label();
             this.dc_comboBox = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -104,8 +106,6 @@
             this.computerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deviceManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label17 = new System.Windows.Forms.Label();
-            this.unlockAccountBtn = new System.Windows.Forms.Button();
-            this.getIPAddrBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -427,6 +427,27 @@
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
             this.User_Tab.Click += new System.EventHandler(this.User_Tab_Click);
+            // 
+            // getIPAddrBtn
+            // 
+            this.getIPAddrBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.getIPAddrBtn.Location = new System.Drawing.Point(819, 530);
+            this.getIPAddrBtn.Name = "getIPAddrBtn";
+            this.getIPAddrBtn.Size = new System.Drawing.Size(167, 23);
+            this.getIPAddrBtn.TabIndex = 39;
+            this.getIPAddrBtn.Text = "Get IP Address";
+            this.getIPAddrBtn.UseVisualStyleBackColor = true;
+            this.getIPAddrBtn.Click += new System.EventHandler(this.getIPAddrBtn_Click);
+            // 
+            // unlockAccountBtn
+            // 
+            this.unlockAccountBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.unlockAccountBtn.Location = new System.Drawing.Point(451, 290);
+            this.unlockAccountBtn.Name = "unlockAccountBtn";
+            this.unlockAccountBtn.Size = new System.Drawing.Size(167, 23);
+            this.unlockAccountBtn.TabIndex = 38;
+            this.unlockAccountBtn.Text = "Unlock Account";
+            this.unlockAccountBtn.UseVisualStyleBackColor = true;
             // 
             // current_dc_lbl
             // 
@@ -856,7 +877,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -874,41 +895,41 @@
             this.computerManagementToolStripMenuItem,
             this.deviceManagerToolStripMenuItem});
             this.externalToolsToolStripMenuItem.Name = "externalToolsToolStripMenuItem";
-            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
+            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.externalToolsToolStripMenuItem.Text = "External Tools";
             // 
             // cmdToolStripMenuItem
             // 
             this.cmdToolStripMenuItem.Name = "cmdToolStripMenuItem";
-            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.cmdToolStripMenuItem.Text = "Cmd";
             this.cmdToolStripMenuItem.Click += new System.EventHandler(this.cmdToolStripMenuItem_Click);
             // 
             // powerShellToolStripMenuItem
             // 
             this.powerShellToolStripMenuItem.Name = "powerShellToolStripMenuItem";
-            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.powerShellToolStripMenuItem.Text = "PowerShell";
             this.powerShellToolStripMenuItem.Click += new System.EventHandler(this.powerShellToolStripMenuItem_Click);
             // 
             // regeditToolStripMenuItem
             // 
             this.regeditToolStripMenuItem.Name = "regeditToolStripMenuItem";
-            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.regeditToolStripMenuItem.Text = "Regedit";
             this.regeditToolStripMenuItem.Click += new System.EventHandler(this.regeditToolStripMenuItem_Click);
             // 
             // computerManagementToolStripMenuItem
             // 
             this.computerManagementToolStripMenuItem.Name = "computerManagementToolStripMenuItem";
-            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.computerManagementToolStripMenuItem.Text = "Computer Management";
             this.computerManagementToolStripMenuItem.Click += new System.EventHandler(this.computerManagementToolStripMenuItem_Click);
             // 
             // deviceManagerToolStripMenuItem
             // 
             this.deviceManagerToolStripMenuItem.Name = "deviceManagerToolStripMenuItem";
-            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.deviceManagerToolStripMenuItem.Text = "Device Manager";
             this.deviceManagerToolStripMenuItem.Click += new System.EventHandler(this.deviceManagerToolStripMenuItem_Click);
             // 
@@ -921,26 +942,6 @@
             this.label17.Size = new System.Drawing.Size(68, 16);
             this.label17.TabIndex = 7;
             this.label17.Text = "Ready!";
-            // 
-            // unlockAccountBtn
-            // 
-            this.unlockAccountBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.unlockAccountBtn.Location = new System.Drawing.Point(451, 290);
-            this.unlockAccountBtn.Name = "unlockAccountBtn";
-            this.unlockAccountBtn.Size = new System.Drawing.Size(167, 23);
-            this.unlockAccountBtn.TabIndex = 38;
-            this.unlockAccountBtn.Text = "Unlock Account";
-            this.unlockAccountBtn.UseVisualStyleBackColor = true;
-            // 
-            // getIPAddrBtn
-            // 
-            this.getIPAddrBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.getIPAddrBtn.Location = new System.Drawing.Point(819, 530);
-            this.getIPAddrBtn.Name = "getIPAddrBtn";
-            this.getIPAddrBtn.Size = new System.Drawing.Size(167, 23);
-            this.getIPAddrBtn.TabIndex = 39;
-            this.getIPAddrBtn.Text = "Get IP Address";
-            this.getIPAddrBtn.UseVisualStyleBackColor = true;
             // 
             // SD
             // 
