@@ -431,7 +431,7 @@
             // getIPAddrBtn
             // 
             this.getIPAddrBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.getIPAddrBtn.Location = new System.Drawing.Point(819, 530);
+            this.getIPAddrBtn.Location = new System.Drawing.Point(873, 530);
             this.getIPAddrBtn.Name = "getIPAddrBtn";
             this.getIPAddrBtn.Size = new System.Drawing.Size(167, 23);
             this.getIPAddrBtn.TabIndex = 39;
@@ -442,9 +442,9 @@
             // unlockAccountBtn
             // 
             this.unlockAccountBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.unlockAccountBtn.Location = new System.Drawing.Point(451, 290);
+            this.unlockAccountBtn.Location = new System.Drawing.Point(582, 290);
             this.unlockAccountBtn.Name = "unlockAccountBtn";
-            this.unlockAccountBtn.Size = new System.Drawing.Size(167, 23);
+            this.unlockAccountBtn.Size = new System.Drawing.Size(169, 23);
             this.unlockAccountBtn.TabIndex = 38;
             this.unlockAccountBtn.Text = "Unlock Account";
             this.unlockAccountBtn.UseVisualStyleBackColor = true;
@@ -467,6 +467,7 @@
             this.dc_comboBox.Name = "dc_comboBox";
             this.dc_comboBox.Size = new System.Drawing.Size(220, 24);
             this.dc_comboBox.TabIndex = 36;
+            this.dc_comboBox.SelectedValueChanged += new System.EventHandler(this.dc_comboBox_SelectedValueChanged);
             // 
             // label16
             // 
@@ -482,7 +483,7 @@
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.checkBox1.Location = new System.Drawing.Point(624, 412);
+            this.checkBox1.Location = new System.Drawing.Point(755, 412);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(157, 20);
             this.checkBox1.TabIndex = 34;
@@ -492,9 +493,9 @@
             // button18
             // 
             this.button18.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.button18.Location = new System.Drawing.Point(451, 410);
+            this.button18.Location = new System.Drawing.Point(582, 410);
             this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(167, 23);
+            this.button18.Size = new System.Drawing.Size(169, 23);
             this.button18.TabIndex = 33;
             this.button18.Text = "Reset Password";
             this.button18.UseVisualStyleBackColor = true;
@@ -502,9 +503,9 @@
             // button17
             // 
             this.button17.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.button17.Location = new System.Drawing.Point(451, 370);
+            this.button17.Location = new System.Drawing.Point(582, 370);
             this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(167, 23);
+            this.button17.Size = new System.Drawing.Size(169, 23);
             this.button17.TabIndex = 32;
             this.button17.Text = "Disable Account";
             this.button17.UseVisualStyleBackColor = true;
@@ -534,134 +535,134 @@
             // 
             this.memberof_comboBox.Font = new System.Drawing.Font("Lucida Console", 12F);
             this.memberof_comboBox.FormattingEnabled = true;
-            this.memberof_comboBox.Location = new System.Drawing.Point(223, 569);
+            this.memberof_comboBox.Location = new System.Drawing.Point(169, 569);
             this.memberof_comboBox.Name = "memberof_comboBox";
-            this.memberof_comboBox.Size = new System.Drawing.Size(559, 24);
+            this.memberof_comboBox.Size = new System.Drawing.Size(613, 24);
             this.memberof_comboBox.TabIndex = 29;
             // 
             // ad_path_box
             // 
             this.ad_path_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ad_path_box.Location = new System.Drawing.Point(223, 530);
+            this.ad_path_box.Location = new System.Drawing.Point(169, 530);
             this.ad_path_box.Name = "ad_path_box";
             this.ad_path_box.ReadOnly = true;
-            this.ad_path_box.Size = new System.Drawing.Size(559, 23);
+            this.ad_path_box.Size = new System.Drawing.Size(698, 23);
             this.ad_path_box.TabIndex = 28;
             // 
             // last_modified_box
             // 
             this.last_modified_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.last_modified_box.Location = new System.Drawing.Point(223, 490);
+            this.last_modified_box.Location = new System.Drawing.Point(169, 490);
             this.last_modified_box.Name = "last_modified_box";
             this.last_modified_box.ReadOnly = true;
-            this.last_modified_box.Size = new System.Drawing.Size(222, 23);
+            this.last_modified_box.Size = new System.Drawing.Size(407, 23);
             this.last_modified_box.TabIndex = 27;
             // 
             // creation_date_box
             // 
             this.creation_date_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creation_date_box.Location = new System.Drawing.Point(223, 450);
+            this.creation_date_box.Location = new System.Drawing.Point(169, 450);
             this.creation_date_box.Name = "creation_date_box";
             this.creation_date_box.ReadOnly = true;
-            this.creation_date_box.Size = new System.Drawing.Size(222, 23);
+            this.creation_date_box.Size = new System.Drawing.Size(407, 23);
             this.creation_date_box.TabIndex = 26;
             // 
             // password_box
             // 
             this.password_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password_box.Location = new System.Drawing.Point(223, 410);
+            this.password_box.Location = new System.Drawing.Point(169, 410);
             this.password_box.Name = "password_box";
             this.password_box.ReadOnly = true;
-            this.password_box.Size = new System.Drawing.Size(222, 23);
+            this.password_box.Size = new System.Drawing.Size(407, 23);
             this.password_box.TabIndex = 25;
             // 
             // account_status_box
             // 
             this.account_status_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.account_status_box.Location = new System.Drawing.Point(223, 370);
+            this.account_status_box.Location = new System.Drawing.Point(169, 370);
             this.account_status_box.Name = "account_status_box";
             this.account_status_box.ReadOnly = true;
-            this.account_status_box.Size = new System.Drawing.Size(222, 23);
+            this.account_status_box.Size = new System.Drawing.Size(407, 23);
             this.account_status_box.TabIndex = 24;
             // 
             // lockout_time_box
             // 
             this.lockout_time_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lockout_time_box.Location = new System.Drawing.Point(223, 330);
+            this.lockout_time_box.Location = new System.Drawing.Point(169, 330);
             this.lockout_time_box.Name = "lockout_time_box";
             this.lockout_time_box.ReadOnly = true;
-            this.lockout_time_box.Size = new System.Drawing.Size(395, 23);
+            this.lockout_time_box.Size = new System.Drawing.Size(407, 23);
             this.lockout_time_box.TabIndex = 23;
             // 
             // lockout_status_box
             // 
             this.lockout_status_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lockout_status_box.Location = new System.Drawing.Point(223, 290);
+            this.lockout_status_box.Location = new System.Drawing.Point(169, 290);
             this.lockout_status_box.Name = "lockout_status_box";
             this.lockout_status_box.ReadOnly = true;
-            this.lockout_status_box.Size = new System.Drawing.Size(222, 23);
+            this.lockout_status_box.Size = new System.Drawing.Size(407, 23);
             this.lockout_status_box.TabIndex = 22;
             // 
             // last_logon_box
             // 
             this.last_logon_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.last_logon_box.Location = new System.Drawing.Point(223, 250);
+            this.last_logon_box.Location = new System.Drawing.Point(169, 250);
             this.last_logon_box.Name = "last_logon_box";
             this.last_logon_box.ReadOnly = true;
-            this.last_logon_box.Size = new System.Drawing.Size(222, 23);
+            this.last_logon_box.Size = new System.Drawing.Size(407, 23);
             this.last_logon_box.TabIndex = 21;
             // 
             // home_drive_box
             // 
             this.home_drive_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.home_drive_box.Location = new System.Drawing.Point(223, 210);
+            this.home_drive_box.Location = new System.Drawing.Point(169, 210);
             this.home_drive_box.Name = "home_drive_box";
             this.home_drive_box.ReadOnly = true;
-            this.home_drive_box.Size = new System.Drawing.Size(353, 23);
+            this.home_drive_box.Size = new System.Drawing.Size(407, 23);
             this.home_drive_box.TabIndex = 20;
             // 
             // manager_box
             // 
             this.manager_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.manager_box.Location = new System.Drawing.Point(223, 170);
+            this.manager_box.Location = new System.Drawing.Point(169, 170);
             this.manager_box.Name = "manager_box";
             this.manager_box.ReadOnly = true;
-            this.manager_box.Size = new System.Drawing.Size(353, 23);
+            this.manager_box.Size = new System.Drawing.Size(407, 23);
             this.manager_box.TabIndex = 19;
             // 
             // office_box
             // 
             this.office_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.office_box.Location = new System.Drawing.Point(223, 130);
+            this.office_box.Location = new System.Drawing.Point(169, 130);
             this.office_box.Name = "office_box";
             this.office_box.ReadOnly = true;
-            this.office_box.Size = new System.Drawing.Size(222, 23);
+            this.office_box.Size = new System.Drawing.Size(276, 23);
             this.office_box.TabIndex = 18;
             // 
             // description_box
             // 
             this.description_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.description_box.Location = new System.Drawing.Point(223, 90);
+            this.description_box.Location = new System.Drawing.Point(169, 90);
             this.description_box.Name = "description_box";
-            this.description_box.Size = new System.Drawing.Size(353, 23);
+            this.description_box.Size = new System.Drawing.Size(407, 23);
             this.description_box.TabIndex = 17;
             // 
             // display_name_box
             // 
             this.display_name_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.display_name_box.Location = new System.Drawing.Point(223, 50);
+            this.display_name_box.Location = new System.Drawing.Point(169, 50);
             this.display_name_box.Name = "display_name_box";
             this.display_name_box.ReadOnly = true;
-            this.display_name_box.Size = new System.Drawing.Size(353, 23);
+            this.display_name_box.Size = new System.Drawing.Size(407, 23);
             this.display_name_box.TabIndex = 16;
             // 
             // user_box
             // 
             this.user_box.AcceptsReturn = true;
             this.user_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user_box.Location = new System.Drawing.Point(223, 10);
+            this.user_box.Location = new System.Drawing.Point(169, 10);
             this.user_box.Name = "user_box";
-            this.user_box.Size = new System.Drawing.Size(222, 23);
+            this.user_box.Size = new System.Drawing.Size(276, 23);
             this.user_box.TabIndex = 15;
             this.user_box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.user_box_KeyDown);
             // 

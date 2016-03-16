@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.DirectoryServices.AccountManagement;
 using System.Collections.Generic;
 using System.DirectoryServices;
+using System.DirectoryServices.ActiveDirectory;
 
 namespace WindowsFormsApplication1
 {
@@ -14,12 +15,14 @@ namespace WindowsFormsApplication1
         static string the2ndDir = "'" + theDirectory + "'";
         int processId = 0; // counts how many processes are running
         string loggedUser = "";
+        string selectedDomainController; // selected domain controller;
 
         public SD()
         {
             InitializeComponent();
             loggedUser = System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToUpper(); // Get the user id logged on the machine
             CheckUser(loggedUser);
+            getDomainControllers();
             this.Text += " " + loggedUser;
         }
         void CheckUser(string user)
@@ -53,7 +56,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("YOU ARE NOT THE CHOSEN ONE!");
                 Environment.Exit(1);
             }
-            else if(chosenOne)
+            else if (chosenOne)
             {
                 MessageBox.Show("YOU ARE THE CHOSEN ONE!");
             }
@@ -92,7 +95,7 @@ namespace WindowsFormsApplication1
         {
             processId--;
             string makeSpace = "***************************************************************************";
-            textBox1.Text = makeSpace+"\n"+result+"\n"+makeSpace+textBox1.Text;
+            textBox1.Text = makeSpace + "\n" + result + "\n" + makeSpace + textBox1.Text;
             CheckStatus();
             return result;
         }
@@ -168,7 +171,7 @@ namespace WindowsFormsApplication1
                     this.button13.Enabled = true;
                     break;
                 case 14:
-                    text = await Task.Run(() => RunPowerShell(String.Format("ping {0}",computerName)));
+                    text = await Task.Run(() => RunPowerShell(String.Format("ping {0}", computerName)));
                     ReturnText(text);
                     this.button14.Enabled = true;
                     break;
@@ -272,14 +275,115 @@ namespace WindowsFormsApplication1
         }
         private void button15_Click(object sender, EventArgs e)
         {
+            GetUserDetails();
+        }
+        private void user_box_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button15_Click(this, new EventArgs());
+            }
+        }
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button14_Click(this, new EventArgs());
+            }
+        }
+        private void cmdToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.WorkingDirectory = @"C:\";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+        private void regeditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "regedit.exe";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+        private void powerShellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "powershell.exe";
+            startInfo.WorkingDirectory = @"C:\";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+        private void computerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "compmgmt.msc";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+        private void deviceManagerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.FileName = "devmgmt.msc";
+            Process process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+        // to work on this !!!! cross thread error
+        private void ps_input_tb_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MakeTheWorldBurnAsync(15);
+            }
+        }
+        private void getIPAddrBtn_Click(object sender, EventArgs e)
+        {
+            GetIpAddress form = new GetIpAddress();
+            form.Show(); // or form.ShowDialog(this);
+        }
+        private void getDomainControllers()
+        {
+            List<string> DC_IPs = new List<string>();
+            Domain domain = Domain.GetCurrentDomain();
+            // here we get the current domain controller to update the Current DC: label.
+            string currentDC = domain.FindDomainController().ToString();
+            currentDC = FormatDomainControllerName(currentDC);
+            current_dc_lbl.Text += currentDC;
+            foreach (DomainController dc in domain.FindAllDiscoverableDomainControllers())
+            {
+                string temp = dc.Name;
+                temp = FormatDomainControllerName(temp);
+                DC_IPs.Add(temp);
+            }
+            DC_IPs.Sort();
+            dc_comboBox.Items.Clear();
+            dc_comboBox.Items.AddRange(DC_IPs.ToArray());
+            dc_comboBox.SelectedIndex = 0;
+        }
+        private string FormatDomainControllerName(string nameOfDomainController)
+        {
+            nameOfDomainController = nameOfDomainController.ToUpper();
+            int length = nameOfDomainController.IndexOf(".");
+            nameOfDomainController = nameOfDomainController.Substring(0, length);
+            return nameOfDomainController;
+        }
+        private void GetUserDetails()
+        {
             string SamAccountName = user_box.Text;
-            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain,selectedDomainController);
+            current_dc_lbl.Text = string.Empty;
+            current_dc_lbl.Text = "Current DC:" + FormatDomainControllerName(selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
             DirectoryEntry dEntry = new DirectoryEntry();
-            if(user == null)
-                {
-                description_box.Text = "Wrong user or user doesn't exist!";  
-                }
+            if (user == null)
+            {
+                description_box.Text = "Wrong user or user doesn't exist!";
+            }
             else
             {
                 dEntry = (DirectoryEntry)user.GetUnderlyingObject();
@@ -298,8 +402,9 @@ namespace WindowsFormsApplication1
                 if (isLockedOut)
                 {
                     DateTime lockedout = user.AccountLockoutTime.Value;
+                    lockout_status_box.Text = "Account Locked!";
                     TimeSpan temps = DateTime.Now.Subtract(lockedout);
-                    lockout_time_box.Text = temps.Days.ToString() + " days " + temps.Hours.ToString() + " hours, " + temps.Minutes.ToString() + " minutes.";
+                    lockout_time_box.Text = temps.Days.ToString() + " days, " + temps.Hours.ToString() + " hours, " + temps.Minutes.ToString() + " minutes.";
                 }
                 else
                 {
@@ -307,7 +412,7 @@ namespace WindowsFormsApplication1
                     lockout_time_box.Text = string.Empty;
                 }
 
-                if(user.Enabled == true)// Check if account is enabled
+                if (user.Enabled == true)// Check if account is enabled
                 {
                     account_status_box.Text = "Account enabled!";
                 }
@@ -315,9 +420,9 @@ namespace WindowsFormsApplication1
                 {
                     account_status_box.Text = "Account disabled!";
                 }
-                   DateTime tmp = user.LastPasswordSet.Value;
-                   TimeSpan tmps = DateTime.Now.Subtract(tmp);
-                   password_box.Text = tmps.Days.ToString()+" days " + tmps.Hours.ToString() + " hours, " + tmps.Minutes.ToString() + " minutes.";
+                DateTime tmp = user.LastPasswordSet.Value;
+                TimeSpan tmps = DateTime.Now.Subtract(tmp);
+                password_box.Text = tmps.Days.ToString() + " days, " + tmps.Hours.ToString() + " hours, "  + tmps.Minutes.ToString() + " minutes.";
 
                 // sa-ti arate cate zile au trecut decand s-a schimbat parola!!!
                 creation_date_box.Text = dEntry.Properties["whenCreated"].Value.ToString();
@@ -335,81 +440,12 @@ namespace WindowsFormsApplication1
                 memberof_comboBox.Items.AddRange(groups.ToArray());
                 memberof_comboBox.SelectedIndex = 0;
             }
-       }
-        private void user_box_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button15_Click(this, new EventArgs());
-            }
         }
-        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        private void dc_comboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button14_Click(this, new EventArgs());
-            }
-        }
-
-        private void cmdToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "cmd.exe";
-            startInfo.WorkingDirectory = @"C:\";
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-        }
-
-        private void regeditToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "regedit.exe";
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-        }
-
-        private void powerShellToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "powershell.exe";
-            startInfo.WorkingDirectory = @"C:\";
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-        }
-
-        private void computerManagementToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "compmgmt.msc";
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-        }
-
-        private void deviceManagerToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "devmgmt.msc";
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
-        }
-        // to work on this 
-        private void ps_input_tb_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                MakeTheWorldBurnAsync(15);
-            }
-        }
-
-        private void getIPAddrBtn_Click(object sender, EventArgs e)
-        {
-            GetIpAddress form = new GetIpAddress();
-            form.Show(); // or form.ShowDialog(this);
+            selectedDomainController = dc_comboBox.SelectedItem.ToString();
+            selectedDomainController += ".sch.com";
+            selectedDomainController = selectedDomainController.ToLower();
         }
     }
 }
