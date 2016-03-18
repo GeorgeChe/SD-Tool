@@ -441,6 +441,7 @@
             // 
             // unlockAccountBtn
             // 
+            this.unlockAccountBtn.Enabled = false;
             this.unlockAccountBtn.Font = new System.Drawing.Font("Lucida Console", 12F);
             this.unlockAccountBtn.Location = new System.Drawing.Point(582, 290);
             this.unlockAccountBtn.Name = "unlockAccountBtn";
@@ -448,6 +449,7 @@
             this.unlockAccountBtn.TabIndex = 38;
             this.unlockAccountBtn.Text = "Unlock Account";
             this.unlockAccountBtn.UseVisualStyleBackColor = true;
+            this.unlockAccountBtn.Click += new System.EventHandler(this.unlockAccountBtn_Click);
             // 
             // current_dc_lbl
             // 

@@ -17,5 +17,8 @@
 	} - can be used to find what users authenticated on that machine.
 14. Add unlock account button, create link to b2b unlock function to shorten the time it takes
 
+15. Make default DomainController to be RO13KDC1(Liviu)------------------------
+16. Make sure to use the Dispose method after quering data from AD (Liviu)----
+
 
 That's all I can think about for now.

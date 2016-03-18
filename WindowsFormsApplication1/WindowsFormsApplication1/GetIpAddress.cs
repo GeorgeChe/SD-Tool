@@ -39,6 +39,7 @@ namespace WindowsFormsApplication1
                 var Options = new JHSoftware.DnsClient.RequestOptions();
                 Options.DnsServers = new IPAddress[] {IPAddress.Parse(DC_IPs[DCno, 1])};
                 var IPs = JHSoftware.DnsClient.LookupHost(tagno + ".sch.com",JHSoftware.DnsClient.IPVersion.IPv4, Options);
+                int i = 0;
                 foreach (var IP in IPs)
                 {
                     Ping pingSender = new Ping();
@@ -47,7 +48,11 @@ namespace WindowsFormsApplication1
                     string pingreply = "NO";
                     if (reply.Status == IPStatus.Success)
                         pingreply = "YES";
-                    toReturn += DC_IPs[DCno, 0] + "\t" + IP.ToString() + "\t" + pingreply + "\n";
+                    if (DC_IPs[DCno, 0].Length < 9)
+                        i = 30;
+                    else
+                        i = 21;
+                    toReturn += String.Format("{0} {1} {2} \n", DC_IPs[DCno, 0].PadRight(i), IP.ToString().PadRight(40) ,pingreply.PadRight(60));
                 }
             }
             catch (JHSoftware.DnsClient.NoDefinitiveAnswerException exceptie)
@@ -66,7 +71,7 @@ namespace WindowsFormsApplication1
         private void GO()
         {
             ResultsrichTextBox.Clear();
-            ResultsrichTextBox.AppendText("Domain Controller\tIP Address\tPing Reply?\n\n");
+            ResultsrichTextBox.AppendText("Domain Controller     \tIP Address\tPing Reply?\n\n");
             bool ok = true;
             string tag = string.Empty;
             int tagno;
@@ -93,13 +98,16 @@ namespace WindowsFormsApplication1
 
             if (ok)
             {
-                //testing on JH to see if we get error. if we do, most likely the machine doesn;t have an ip allocated.
+                //testing on JH to see if we get error. if we do, most likely the machine doesn't have an ip allocated.
                 string test = getIPfromspecificDCs(tag, 0);
                 if (test == string.Empty || test == null)
                     MessageBox.Show("TAG might not have an IP allocated or not on domain!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
                     ResultsrichTextBox.AppendText(getIPfromspecificDCs(tag, 0));
+
+
+
                     for (int i = 1; i < 22; i++)
                         ResultsrichTextBox.AppendText(getIPfromspecificDCs(tag, i));
                 }
