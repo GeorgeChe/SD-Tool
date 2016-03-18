@@ -9,20 +9,19 @@
 9. Handle user null exception without using try/catch block!(Liviu)------------ Done
 10. Add get IP address that pings from all of the DC's (Liviu) ---------------- Done
 11. Implement get Tag Details (Liviu) ----------------------------------------- 
-12. nltest /sc_query:sch.com  /server:TAG-number (can be used to find the DC that auth the machine)
-13. function get-logonserver 
-	{
-	$computer = read-host "Enterservername"
-	$logon=Get-WmiObject Win32_NetworkLoginProfile -ComputerName $computer | select name,logonserver | ft -AutoSize
-	$logon
-	} - can be used to find what users authenticated on that machine.
 14. Add unlock account button, create link to b2b unlock function to shorten the time it takes - Done
-
 15. Make default DomainController to be RO13KDC1(Liviu)------------------------ Done
 16. Make sure to use the Dispose method after quering data from AD (Liviu)----- Done
-17. Link JHS.Software.dll to the project!!!
-
+17. Add Date/Time picker to get event log report
+18. Add clear method to machine rich text box (to much text)
 
 That's all I can think about for now.
 
 
+12. nltest /sc_query:sch.com  /server:TAG-number (can be used to find the DC that auth the machine)
+13. function get-logonserver 
+	{
+		$computer = read-host "Enterservername"
+		$logon=Get-WmiObject Win32_NetworkLoginProfile -ComputerName $computer | select name,logonserver | ft -AutoSize
+		$logon
+	} - can be used to find what users authenticated on that machine.
