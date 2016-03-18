@@ -478,5 +478,24 @@ namespace WindowsFormsApplication1
             process.StartInfo = startInfo;
             process.Start();
         }
+        private void checkBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            string SamAccountName = user_box.Text;
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
+            UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+
+            if (checkBox1.Checked)
+            {
+                user.PasswordNeverExpires = true;
+                user.Save();
+            }
+            if (!checkBox1.Checked)
+            {
+                user.PasswordNeverExpires = false;
+                user.Save();
+            }
+            user.Dispose();
+            principalContext.Dispose();
+        }
     }
 }

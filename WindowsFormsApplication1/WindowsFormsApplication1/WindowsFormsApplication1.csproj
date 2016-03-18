@@ -72,8 +72,9 @@
     <ApplicationIcon>icoX.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JHSoftware.DnsClient">
-      <HintPath>..\..\..\..\UtilitarAD\JHSoftware.DnsClient.dll</HintPath>
+    <Reference Include="JHSoftware.DnsClient, Version=1.0.1.0, Culture=neutral, PublicKeyToken=3eacd9f3dbc38099, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Service References\JHSoftware.DnsClient.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -157,6 +158,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TODO_List.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

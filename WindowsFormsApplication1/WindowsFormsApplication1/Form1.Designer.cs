@@ -491,6 +491,7 @@
             this.checkBox1.TabIndex = 34;
             this.checkBox1.Text = "Never Expires";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.checkBox1_MouseClick);
             // 
             // button18
             // 

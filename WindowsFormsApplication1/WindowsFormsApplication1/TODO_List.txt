@@ -20,6 +20,7 @@
 
 15. Make default DomainController to be RO13KDC1(Liviu)------------------------ Done
 16. Make sure to use the Dispose method after quering data from AD (Liviu)----- Done
+17. Link JHS.Software.dll to the project!!!
 
 
 That's all I can think about for now.
