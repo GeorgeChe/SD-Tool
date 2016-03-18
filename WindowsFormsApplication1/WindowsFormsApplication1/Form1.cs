@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
         string loggedUser = "";
         string selectedDomainController; // selected domain controller;
         bool isUserLockedOut; // False if the account is not locked and true if the user is locked out. Global var updated from the GetUserDetails method.
+        [ThreadStatic]
+        string powerShellInput;
 
         public SD()
         {
@@ -61,6 +63,8 @@ namespace WindowsFormsApplication1
             {
                 //MessageBox.Show("YOU ARE THE CHOSEN ONE!");
             }
+            group.Dispose();
+            principalContext.Dispose();
         }
         void CheckStatus()
         {
@@ -176,10 +180,6 @@ namespace WindowsFormsApplication1
                     ReturnText(text);
                     this.button14.Enabled = true;
                     break;
-                case 15:
-                    string output = await Task.Run(() => RunPowerShell(ps_input_tb.Text));
-                    ps_output_tb.Text = output;
-                    break;
             }
         }
         private void getDomainControllers()
@@ -199,7 +199,7 @@ namespace WindowsFormsApplication1
             DC_IPs.Sort();
             dc_comboBox.Items.Clear();
             dc_comboBox.Items.AddRange(DC_IPs.ToArray());
-            dc_comboBox.SelectedIndex = 0;
+            dc_comboBox.SelectedIndex = 14;
         }
         private string FormatDomainControllerName(string nameOfDomainController)
         {
@@ -285,7 +285,9 @@ namespace WindowsFormsApplication1
                 memberof_comboBox.Items.Insert(0, "- Press dropdown to see - ");
                 memberof_comboBox.Items.AddRange(groups.ToArray());
                 memberof_comboBox.SelectedIndex = 0;
+                user.Dispose();
             }
+            principalContext.Dispose();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -410,14 +412,23 @@ namespace WindowsFormsApplication1
                 Process.Start("http://b2bwebtest/Scc.ITSM.Admin/Home/UnlockAccounts");
             }
         }
-        
-        
-        // to work on this !!!! cross thread error
         private void ps_input_tb_KeyDown(object sender, KeyEventArgs e)
         {
+            powerShellInput = ps_input_tb.Text;
             if (e.KeyCode == Keys.Enter)
             {
-                MakeTheWorldBurnAsync(15);
+                ps_input_tb.ReadOnly = true;
+
+
+                Task<string> runPS = Task.Run(() =>
+                {
+                    return RunPowerShell(powerShellInput);
+                }).ContinueWith((r) =>
+                {
+                    return r.Result;
+                });
+                ps_output_tb.Text = runPS.Result;
+                ps_input_tb.ReadOnly = false;
             }
         }
         private void getIPAddrBtn_Click(object sender, EventArgs e)
@@ -425,12 +436,6 @@ namespace WindowsFormsApplication1
             GetIpAddress form = new GetIpAddress();
             form.Show(); // or form.ShowDialog(this);
         }
-
-
-
-
-
-
         private void cmdToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -473,6 +478,5 @@ namespace WindowsFormsApplication1
             process.StartInfo = startInfo;
             process.Start();
         }
-
     }
 }
