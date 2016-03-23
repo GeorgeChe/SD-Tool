@@ -560,14 +560,14 @@ namespace WindowsFormsApplication1
         //*******************************  PASSWORD RESTE BUTTON ***************************************** DON'T FORGET TO ENABLE THIS
         private void button18_Click(object sender, EventArgs e)
         {
-            //string SamAccountName = user_box.Text;
-            //PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
-            //UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+            string SamAccountName = user_box.Text;
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
+            UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
             userNewPassword = RandomPasswordGenerator();
-            //user.SetPassword(userNewPassword);
-            //GetUserDetails();
-            //user.Dispose();
-            //principalContext.Dispose();
+            user.SetPassword(userNewPassword);
+            GetUserDetails();
+            user.Dispose();
+            principalContext.Dispose();
             sendEmailWithTheNewPassword();
         }
         private void sendEmailWithTheNewPassword()
