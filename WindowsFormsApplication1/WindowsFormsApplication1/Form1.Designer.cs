@@ -59,7 +59,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
+            this.disabel_btn = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.memberof_comboBox = new System.Windows.Forms.ComboBox();
@@ -106,6 +106,7 @@
             this.computerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deviceManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label17 = new System.Windows.Forms.Label();
+            this.aClear_btn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -385,7 +386,7 @@
             this.User_Tab.Controls.Add(this.label16);
             this.User_Tab.Controls.Add(this.checkBox1);
             this.User_Tab.Controls.Add(this.button18);
-            this.User_Tab.Controls.Add(this.button17);
+            this.User_Tab.Controls.Add(this.disabel_btn);
             this.User_Tab.Controls.Add(this.button16);
             this.User_Tab.Controls.Add(this.button15);
             this.User_Tab.Controls.Add(this.memberof_comboBox);
@@ -502,16 +503,18 @@
             this.button18.TabIndex = 33;
             this.button18.Text = "Reset Password";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
-            // button17
+            // disabel_btn
             // 
-            this.button17.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.button17.Location = new System.Drawing.Point(582, 370);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(169, 23);
-            this.button17.TabIndex = 32;
-            this.button17.Text = "Disable Account";
-            this.button17.UseVisualStyleBackColor = true;
+            this.disabel_btn.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.disabel_btn.Location = new System.Drawing.Point(582, 370);
+            this.disabel_btn.Name = "disabel_btn";
+            this.disabel_btn.Size = new System.Drawing.Size(169, 23);
+            this.disabel_btn.TabIndex = 32;
+            this.disabel_btn.Text = "Disable Account";
+            this.disabel_btn.UseVisualStyleBackColor = true;
+            this.disabel_btn.Click += new System.EventHandler(this.disable_btn_Click);
             // 
             // button16
             // 
@@ -522,6 +525,7 @@
             this.button16.TabIndex = 31;
             this.button16.Text = "Update Description";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
             // 
             // button15
             // 
@@ -947,11 +951,23 @@
             this.label17.TabIndex = 7;
             this.label17.Text = "Ready!";
             // 
+            // aClear_btn
+            // 
+            this.aClear_btn.Font = new System.Drawing.Font("Lucida Console", 9.75F);
+            this.aClear_btn.Location = new System.Drawing.Point(843, 682);
+            this.aClear_btn.Name = "aClear_btn";
+            this.aClear_btn.Size = new System.Drawing.Size(204, 32);
+            this.aClear_btn.TabIndex = 8;
+            this.aClear_btn.Text = "Clear";
+            this.aClear_btn.UseVisualStyleBackColor = true;
+            this.aClear_btn.Click += new System.EventHandler(this.aClear_btn_Click);
+            // 
             // SD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1061, 718);
+            this.Controls.Add(this.aClear_btn);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
@@ -1029,7 +1045,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button disabel_btn;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.ComboBox memberof_comboBox;
@@ -1058,6 +1074,7 @@
         private System.Windows.Forms.RichTextBox ps_input_tb;
         private System.Windows.Forms.Button getIPAddrBtn;
         private System.Windows.Forms.Button unlockAccountBtn;
+        private System.Windows.Forms.Button aClear_btn;
     }
 }
 

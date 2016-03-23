@@ -6,17 +6,27 @@ using System.DirectoryServices.AccountManagement;
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.DirectoryServices.ActiveDirectory;
+using Outlook = Microsoft.Office.Interop.Outlook;
+using System.IO;
+using System.Text;
 
 namespace WindowsFormsApplication1
 {
     public partial class SD : Form
     {
+        //Global Stuff
+        int processId = 0; // counts how many processes are running
+        string selectedDomainController; // selected domain controller;
+        string loggedUser = "";
+        bool isUserLockedOut; // False if the account is not locked and true if the user is locked out. Global var updated from the GetUserDetails method.
+        string userDetailsName;
+        string userManagerName;
+        string userNewPassword;
+
+
+
         static string theDirectory = AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
         static string the2ndDir = "'" + theDirectory + "'";
-        int processId = 0; // counts how many processes are running
-        string loggedUser = "";
-        string selectedDomainController; // selected domain controller;
-        bool isUserLockedOut; // False if the account is not locked and true if the user is locked out. Global var updated from the GetUserDetails method.
         [ThreadStatic]
         string powerShellInput;
 
@@ -104,7 +114,7 @@ namespace WindowsFormsApplication1
             CheckStatus();
             return result;
         }
-        private async Task MakeTheWorldBurnAsync(int button)
+        private async void MakeTheWorldBurnAsync(int button)
         {
             processId++;
             string computerName = textBox2.Text;
@@ -226,12 +236,22 @@ namespace WindowsFormsApplication1
             }
             if (user != null)
             {
+                userDetailsName = user.DisplayName; // prepare the name of the user for the password reset email
                 display_name_box.Text = user.DisplayName;
                 description_box.Text = user.Description;
                 office_box.Text = dEntry.Properties["physicalDeliveryOfficeName"].Value.ToString();
-                string manager = dEntry.Properties["manager"].Value.ToString();
-                int Length = manager.IndexOf(',');
-                manager_box.Text = manager.Substring(3, Length - 3);
+                if (dEntry.Properties["manager"].Value != null)
+                {
+                    string manager = dEntry.Properties["manager"].Value.ToString();
+                    int Length = manager.IndexOf(',');
+                    manager_box.Text = manager.Substring(3, Length - 3);
+                }else
+                {
+                    manager_box.Text = "N/A";
+                }
+                // Important for the PasswordResetEmail
+                userManagerName = manager_box.Text;
+                //prepare the name of the user manager for the password reset email
                 home_drive_box.Text = dEntry.Properties["homeDirectory"].Value.ToString();
                 last_logon_box.Text = user.LastLogon.ToString();
                 isUserLockedOut = user.IsAccountLockedOut();
@@ -261,10 +281,12 @@ namespace WindowsFormsApplication1
                 if (user.Enabled == true)// Check if account is enabled
                 {
                     account_status_box.Text = "Account enabled!";
+                    disabel_btn.Text = "Disable Account";
                 }
                 else
                 {
                     account_status_box.Text = "Account disabled!";
+                    disabel_btn.Text = "Enable Account";
                 }
                 DateTime tmp = user.LastPasswordSet.Value;
                 TimeSpan tmps = DateTime.Now.Subtract(tmp);
@@ -292,26 +314,26 @@ namespace WindowsFormsApplication1
         private void button1_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(1);
-            this.button1.Enabled = false;
             CheckStatus();
+            this.button1.Enabled = false;
         }
         private void button2_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(2);
-            this.button2.Enabled = false;
             CheckStatus();
+            this.button2.Enabled = false;
         }
         private void button3_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(3);
-            this.button3.Enabled = false;
             CheckStatus();
+            this.button3.Enabled = false;
         }
         private void button4_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(4);
-            this.button4.Enabled = false;
             CheckStatus();
+            this.button4.Enabled = false;
         }
         private void button5_Click(object sender, EventArgs e)
         {
@@ -322,56 +344,56 @@ namespace WindowsFormsApplication1
         private void button6_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(6);
-            this.button6.Enabled = false;
             CheckStatus();
+            this.button6.Enabled = false;
         }
         private void button7_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(7);
-            this.button7.Enabled = false;
             CheckStatus();
+            this.button7.Enabled = false;
         }
         private void button8_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(8);
-            this.button8.Enabled = false;
             CheckStatus();
+            this.button8.Enabled = false;
         }
         private void button9_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(9);
-            this.button9.Enabled = false;
             CheckStatus();
+            this.button9.Enabled = false;
         }
         private void button10_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(10);
-            this.button10.Enabled = false;
             CheckStatus();
+            this.button10.Enabled = false;
         }
         private void button11_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(11);
-            this.button11.Enabled = false;
             CheckStatus();
+            this.button11.Enabled = false;
         }
         private void button12_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(12);
-            this.button12.Enabled = false;
             CheckStatus();
+            this.button12.Enabled = false;
         }
         private void button13_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(13);
-            this.button13.Enabled = false;
             CheckStatus();
+            this.button13.Enabled = false;
         }
         private void button14_Click(object sender, EventArgs e)
         {
             MakeTheWorldBurnAsync(14);
-            this.button14.Enabled = false;
             CheckStatus();
+            this.button14.Enabled = false;
         }
         private void label8_Click(object sender, EventArgs e)
         {
@@ -494,6 +516,109 @@ namespace WindowsFormsApplication1
                 user.PasswordNeverExpires = false;
                 user.Save();
             }
+            user.Dispose();
+            principalContext.Dispose();
+        }
+        private void aClear_btn_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = string.Empty;
+        }
+        private void disable_btn_Click(object sender, EventArgs e)
+        {
+            string SamAccountName = user_box.Text;
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
+            UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+
+            if (user.Enabled == true)
+            {
+                user.Enabled = false;
+                user.Save();
+            }
+            else
+            {
+                user.Enabled = true;
+                user.Save();
+            }
+            GetUserDetails();
+            user.Dispose();
+            principalContext.Dispose();
+        }
+        private string RandomPasswordGenerator()
+        {
+            Random randomNumberGenerator = new Random();
+            string[] words = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January",
+                "February", "March", "April", "August", "September", "October", "November", "December"};
+            int randomMonth = randomNumberGenerator.Next(0, words.Length);
+            int randomNumber = randomNumberGenerator.Next(0, 31);
+            string generatedPassword = words[randomMonth] + randomNumber.ToString();
+            for (int i = generatedPassword.Length; i < 9; i++)
+            {
+                generatedPassword += randomNumberGenerator.Next(0, 31).ToString();
+            }
+            return generatedPassword;
+        }
+        //*******************************  PASSWORD RESTE BUTTON ***************************************** DON'T FORGET TO ENABLE THIS
+        private void button18_Click(object sender, EventArgs e)
+        {
+            //string SamAccountName = user_box.Text;
+            //PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
+            //UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+            userNewPassword = RandomPasswordGenerator();
+            //user.SetPassword(userNewPassword);
+            //GetUserDetails();
+            //user.Dispose();
+            //principalContext.Dispose();
+            sendEmailWithTheNewPassword();
+        }
+        private void sendEmailWithTheNewPassword()
+        {
+            Outlook.Application outlookApp = new Outlook.Application();
+            Outlook._MailItem oMailItem = (Outlook._MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
+            string manager = manager_box.Text;
+            if (manager_box.Text != string.Empty)
+            {
+            int Length = manager.IndexOf(' ');
+            manager = manager.Substring(0, Length);
+            }
+            oMailItem.To = manager_box.Text;
+            oMailItem.Subject = "New network account password for " + userDetailsName;
+            oMailItem.HTMLBody = $"<html><title></title><body style='font-family:Calibri;font size=11;font-style:italic;'><p> Dear {manager},</p><p> We received a request for a Password Reset from {userDetailsName}.</p></p>Please find below the requested details:<p><p> Username:<span style = 'color: red;'>{user_box.Text} </span ></p><p> Password: <span style = 'color: red;'>{userNewPassword} </span ></p>We kindly advise to forward these details to {userDetailsName} in order for the request to be complete.</p></p>Should you have any questions, please contact the Service Desk on 0121 281 8600 or It.Support@scc.com<p></p><p></p></body></html>" +"\n \n"+ReadSignature();
+            oMailItem.Display(true);
+        }
+        private string ReadSignature()
+        {
+            string appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Microsoft\\Signatures";
+            string signature = string.Empty;
+            DirectoryInfo diInfo = new DirectoryInfo(appDataDir);
+
+            if (diInfo.Exists)
+            {
+                FileInfo[] fiSignature = diInfo.GetFiles("*.htm");
+
+                if (fiSignature.Length > 0)
+                {
+                    StreamReader sr = new StreamReader(fiSignature[0].FullName, Encoding.Default);
+                    signature = sr.ReadToEnd();
+
+                    if (!string.IsNullOrEmpty(signature))
+                    {
+                        string fileName = fiSignature[0].Name.Replace(fiSignature[0].Extension, string.Empty);
+                        signature = signature.Replace(fileName + "_files/", appDataDir + "/" + fileName + "_files/");
+                    }
+                }
+            }
+            return signature;
+        }
+        // Update description!
+        private void button16_Click(object sender, EventArgs e)
+        {
+            string SamAccountName = user_box.Text;
+            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
+            UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+
+            user.Description = description_box.Text;
+            user.Save();
+            GetUserDetails();
             user.Dispose();
             principalContext.Dispose();
         }
