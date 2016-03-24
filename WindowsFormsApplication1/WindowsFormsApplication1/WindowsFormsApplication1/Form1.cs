@@ -259,7 +259,11 @@ namespace WindowsFormsApplication1
                 // Important for the PasswordResetEmail
                 userManagerName = manager_box.Text;
                 //prepare the name of the user manager for the password reset email
-                home_drive_box.Text = dEntry.Properties["homeDirectory"].Value.ToString();
+                if (dEntry.Properties["homeDirectory"].Value != null)
+                {
+                    home_drive_box.Text = dEntry.Properties["homeDirectory"].Value.ToString();
+                }
+
                 last_logon_box.Text = user.LastLogon.ToString();
                 isUserLockedOut = user.IsAccountLockedOut();
                 if(user.PasswordNeverExpires == true)
@@ -274,21 +278,25 @@ namespace WindowsFormsApplication1
                 {
                     unlockAccountBtn.Enabled = true;
                     DateTime lockedout = user.AccountLockoutTime.Value;
-                    lockout_status_box.Text = "Account Locked!";
                     lockout_status_box.BackColor = Color.GhostWhite;
                     lockout_status_box.ForeColor = Color.Red;
+                    lockout_status_box.Text = "Account Locked!";
                     TimeSpan temps = DateTime.Now.Subtract(lockedout);
                     lockout_time_box.Text = temps.Days.ToString() + " days, " + temps.Hours.ToString() + " hours, " + temps.Minutes.ToString() + " minutes.";
                 }
                 else
                 {
                     unlockAccountBtn.Enabled = false;
+                    lockout_status_box.BackColor = Color.GhostWhite;
+                    lockout_status_box.ForeColor = Color.Black;
                     lockout_status_box.Text = "Account Not Locked!";
                     lockout_time_box.Text = string.Empty;
                 }
 
                 if (user.Enabled == true)// Check if account is enabled
                 {
+                    account_status_box.BackColor = Color.GhostWhite;
+                    account_status_box.ForeColor = Color.Black;
                     account_status_box.Text = "Account enabled!";
                     disabel_btn.Text = "Disable Account";
                 }
@@ -519,6 +527,7 @@ namespace WindowsFormsApplication1
             string SamAccountName = user_box.Text;
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
+            
 
             if (checkBox1.Checked)
             {
@@ -677,6 +686,18 @@ namespace WindowsFormsApplication1
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void aButton_search_DB_Click(object sender, EventArgs e)
+        {
+            GetTagBasedOnUser getTagBasedOnUser = new GetTagBasedOnUser();
+            getTagBasedOnUser.DownloadFile("https://sccitsm.service-now.com/sys_report_template.do?jvar_report_id=a05975a237d616808ba1138943990ee8", "c:\\test\\incident.csv");
+        }
+
+        private void aButton_Search_TagInfo_Click(object sender, EventArgs e)
+        {
+            GetTagBasedOnUser searchExcelFile = new GetTagBasedOnUser();
+            aShowTag_tb.Text += searchExcelFile.SearchExcelFile(display_name_box.Text)+"\n";
         }
     }
 }

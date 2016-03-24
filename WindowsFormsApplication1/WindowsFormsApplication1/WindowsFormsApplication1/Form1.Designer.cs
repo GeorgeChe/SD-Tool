@@ -107,6 +107,9 @@
             this.deviceManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label17 = new System.Windows.Forms.Label();
             this.aClear_btn = new System.Windows.Forms.Button();
+            this.aShowTag_tb = new System.Windows.Forms.RichTextBox();
+            this.aButton_Search_TagInfo = new System.Windows.Forms.Button();
+            this.aButton_search_DB = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -380,6 +383,9 @@
             // 
             // User_Tab
             // 
+            this.User_Tab.Controls.Add(this.aButton_search_DB);
+            this.User_Tab.Controls.Add(this.aButton_Search_TagInfo);
+            this.User_Tab.Controls.Add(this.aShowTag_tb);
             this.User_Tab.Controls.Add(this.getIPAddrBtn);
             this.User_Tab.Controls.Add(this.unlockAccountBtn);
             this.User_Tab.Controls.Add(this.current_dc_lbl);
@@ -893,7 +899,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -964,6 +970,38 @@
             this.aClear_btn.Text = "Clear";
             this.aClear_btn.UseVisualStyleBackColor = true;
             this.aClear_btn.Click += new System.EventHandler(this.aClear_btn_Click);
+            // 
+            // aShowTag_tb
+            // 
+            this.aShowTag_tb.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.aShowTag_tb.Location = new System.Drawing.Point(822, 130);
+            this.aShowTag_tb.Name = "aShowTag_tb";
+            this.aShowTag_tb.ReadOnly = true;
+            this.aShowTag_tb.Size = new System.Drawing.Size(217, 130);
+            this.aShowTag_tb.TabIndex = 40;
+            this.aShowTag_tb.Text = "";
+            // 
+            // aButton_Search_TagInfo
+            // 
+            this.aButton_Search_TagInfo.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.aButton_Search_TagInfo.Location = new System.Drawing.Point(582, 159);
+            this.aButton_Search_TagInfo.Name = "aButton_Search_TagInfo";
+            this.aButton_Search_TagInfo.Size = new System.Drawing.Size(200, 23);
+            this.aButton_Search_TagInfo.TabIndex = 41;
+            this.aButton_Search_TagInfo.Text = "Search TagInfo";
+            this.aButton_Search_TagInfo.UseVisualStyleBackColor = true;
+            this.aButton_Search_TagInfo.Click += new System.EventHandler(this.aButton_Search_TagInfo_Click);
+            // 
+            // aButton_search_DB
+            // 
+            this.aButton_search_DB.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.aButton_search_DB.Location = new System.Drawing.Point(582, 130);
+            this.aButton_search_DB.Name = "aButton_search_DB";
+            this.aButton_search_DB.Size = new System.Drawing.Size(200, 23);
+            this.aButton_search_DB.TabIndex = 42;
+            this.aButton_search_DB.Text = "Refresh Database";
+            this.aButton_search_DB.UseVisualStyleBackColor = true;
+            this.aButton_search_DB.Click += new System.EventHandler(this.aButton_search_DB_Click);
             // 
             // SD
             // 
@@ -1078,6 +1116,9 @@
         private System.Windows.Forms.Button getIPAddrBtn;
         private System.Windows.Forms.Button unlockAccountBtn;
         private System.Windows.Forms.Button aClear_btn;
+        private System.Windows.Forms.Button aButton_search_DB;
+        private System.Windows.Forms.Button aButton_Search_TagInfo;
+        private System.Windows.Forms.RichTextBox aShowTag_tb;
     }
 }
 
