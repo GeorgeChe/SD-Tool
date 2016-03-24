@@ -9,6 +9,7 @@ using System.DirectoryServices.ActiveDirectory;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using System.IO;
 using System.Text;
+using System.Drawing;
 
 namespace WindowsFormsApplication1
 {
@@ -274,6 +275,8 @@ namespace WindowsFormsApplication1
                     unlockAccountBtn.Enabled = true;
                     DateTime lockedout = user.AccountLockoutTime.Value;
                     lockout_status_box.Text = "Account Locked!";
+                    lockout_status_box.BackColor = Color.GhostWhite;
+                    lockout_status_box.ForeColor = Color.Red;
                     TimeSpan temps = DateTime.Now.Subtract(lockedout);
                     lockout_time_box.Text = temps.Days.ToString() + " days, " + temps.Hours.ToString() + " hours, " + temps.Minutes.ToString() + " minutes.";
                 }
@@ -291,6 +294,8 @@ namespace WindowsFormsApplication1
                 }
                 else
                 {
+                    account_status_box.BackColor = Color.GhostWhite;
+                    account_status_box.ForeColor = Color.Red;
                     account_status_box.Text = "Account disabled!";
                     disabel_btn.Text = "Enable Account";
                 }

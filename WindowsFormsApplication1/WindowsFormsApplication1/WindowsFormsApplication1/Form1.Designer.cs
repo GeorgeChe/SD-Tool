@@ -605,6 +605,7 @@
             // lockout_status_box
             // 
             this.lockout_status_box.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lockout_status_box.ForeColor = System.Drawing.Color.Aqua;
             this.lockout_status_box.Location = new System.Drawing.Point(169, 290);
             this.lockout_status_box.Name = "lockout_status_box";
             this.lockout_status_box.ReadOnly = true;
