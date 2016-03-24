@@ -224,7 +224,6 @@ namespace WindowsFormsApplication1
             string SamAccountName = user_box.Text;
             if(user_box.Text == string.Empty)
             {
-                description_box.Text = "Please enter an user";
                 SamAccountName = "abc";
             }
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain,selectedDomainController);
@@ -235,6 +234,7 @@ namespace WindowsFormsApplication1
             
             if (user == null)
             {
+                ClearUserTab();
                 description_box.Text = "Wrong user or user doesn't exist!";
             }
             else
@@ -299,9 +299,12 @@ namespace WindowsFormsApplication1
                     account_status_box.Text = "Account disabled!";
                     disabel_btn.Text = "Enable Account";
                 }
-                DateTime tmp = user.LastPasswordSet.Value;
-                TimeSpan tmps = DateTime.Now.Subtract(tmp);
-                password_box.Text = tmps.Days.ToString() + " days, " + tmps.Hours.ToString() + " hours, "  + tmps.Minutes.ToString() + " minutes.";
+                if (user.LastPasswordSet.HasValue)
+                {
+                    DateTime tmp = user.LastPasswordSet.Value;
+                    TimeSpan tmps = DateTime.Now.Subtract(tmp);
+                    password_box.Text = tmps.Days.ToString() + " days, " + tmps.Hours.ToString() + " hours, " + tmps.Minutes.ToString() + " minutes.";
+                }
 
                 // sa-ti arate cate zile au trecut decand s-a schimbat parola!!!
                 creation_date_box.Text = dEntry.Properties["whenCreated"].Value.ToString();
@@ -531,9 +534,40 @@ namespace WindowsFormsApplication1
             principalContext.Dispose();
         }
 
+        private void ClearUserTab()
+        {
+            //user_box.Text = string.Empty;
+            display_name_box.Text = string.Empty;
+            description_box.Text = string.Empty;
+            office_box.Text = string.Empty;
+            manager_box.Text = string.Empty;
+            home_drive_box.Text = string.Empty;
+            last_logon_box.Text = string.Empty;
+            lockout_status_box.Text = string.Empty;
+            lockout_time_box.Text = string.Empty;
+            account_status_box.Text = string.Empty;
+            password_box.Text = string.Empty;
+            creation_date_box.Text = string.Empty;
+            last_modified_box.Text = string.Empty;
+            ad_path_box.Text = string.Empty;
+        }
+
         private void aClear_btn_Click(object sender, EventArgs e)
         {
-            textBox1.Text = string.Empty;
+            if (tabControl2.SelectedIndex == 0)
+            {
+                ClearUserTab();
+                user_box.Text = string.Empty;
+            }
+            else if(tabControl2.SelectedIndex == 1)
+            {
+                   textBox1.Text = string.Empty;
+            }
+            else if (tabControl2.SelectedIndex == 2)
+            {
+                ps_input_tb.Text = string.Empty;
+                ps_output_tb.Text = string.Empty;
+            }
         }
         private void disable_btn_Click(object sender, EventArgs e)
         {
@@ -637,14 +671,7 @@ namespace WindowsFormsApplication1
 
         private void tabControl2_Selected(object sender, TabControlEventArgs e)
         {
-            if (tabControl2.SelectedIndex == 1)
-            {
-                aClear_btn.Visible = true;
-            }
-            else
-            {
-                aClear_btn.Visible = false;
-            }
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

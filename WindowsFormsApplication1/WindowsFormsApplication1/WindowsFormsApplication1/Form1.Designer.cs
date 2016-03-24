@@ -963,7 +963,6 @@
             this.aClear_btn.TabIndex = 8;
             this.aClear_btn.Text = "Clear";
             this.aClear_btn.UseVisualStyleBackColor = true;
-            this.aClear_btn.Visible = false;
             this.aClear_btn.Click += new System.EventHandler(this.aClear_btn_Click);
             // 
             // SD
