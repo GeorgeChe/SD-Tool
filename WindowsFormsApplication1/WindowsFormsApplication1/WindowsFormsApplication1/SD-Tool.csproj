@@ -24,7 +24,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -72,9 +72,8 @@
     <ApplicationIcon>icoX.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JHSoftware.DnsClient, Version=1.0.1.0, Culture=neutral, PublicKeyToken=3eacd9f3dbc38099, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Service References\JHSoftware.DnsClient.dll</HintPath>
+    <Reference Include="JHSoftware.DnsClient">
+      <HintPath>..\..\..\..\..\UtilitarAD\JHSoftware.DnsClient.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Office.Interop.Outlook, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">

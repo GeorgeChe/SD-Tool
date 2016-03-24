@@ -376,6 +376,7 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(1061, 656);
             this.tabControl2.TabIndex = 4;
+            this.tabControl2.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl2_Selected);
             // 
             // User_Tab
             // 
@@ -891,8 +892,9 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // externalToolsToolStripMenuItem
             // 
@@ -960,6 +962,7 @@
             this.aClear_btn.TabIndex = 8;
             this.aClear_btn.Text = "Clear";
             this.aClear_btn.UseVisualStyleBackColor = true;
+            this.aClear_btn.Visible = false;
             this.aClear_btn.Click += new System.EventHandler(this.aClear_btn_Click);
             // 
             // SD

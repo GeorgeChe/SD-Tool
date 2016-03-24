@@ -221,11 +221,17 @@ namespace WindowsFormsApplication1
         private void GetUserDetails()
         {
             string SamAccountName = user_box.Text;
+            if(user_box.Text == string.Empty)
+            {
+                description_box.Text = "Please enter an user";
+                SamAccountName = "abc";
+            }
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain,selectedDomainController);
             current_dc_lbl.Text = string.Empty;
             current_dc_lbl.Text = "Current DC:" + FormatDomainControllerName(selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
             DirectoryEntry dEntry = new DirectoryEntry();
+            
             if (user == null)
             {
                 description_box.Text = "Wrong user or user doesn't exist!";
@@ -519,6 +525,7 @@ namespace WindowsFormsApplication1
             user.Dispose();
             principalContext.Dispose();
         }
+
         private void aClear_btn_Click(object sender, EventArgs e)
         {
             textBox1.Text = string.Empty;
@@ -621,6 +628,23 @@ namespace WindowsFormsApplication1
             GetUserDetails();
             user.Dispose();
             principalContext.Dispose();
+        }
+
+        private void tabControl2_Selected(object sender, TabControlEventArgs e)
+        {
+            if (tabControl2.SelectedIndex == 1)
+            {
+                aClear_btn.Visible = true;
+            }
+            else
+            {
+                aClear_btn.Visible = false;
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
