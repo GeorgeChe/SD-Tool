@@ -377,7 +377,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 27);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1061, 656);
+            this.tabControl2.Size = new System.Drawing.Size(1083, 656);
             this.tabControl2.TabIndex = 4;
             this.tabControl2.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl2_Selected);
             // 
@@ -430,7 +430,7 @@
             this.User_Tab.Location = new System.Drawing.Point(4, 26);
             this.User_Tab.Name = "User_Tab";
             this.User_Tab.Padding = new System.Windows.Forms.Padding(3);
-            this.User_Tab.Size = new System.Drawing.Size(1053, 626);
+            this.User_Tab.Size = new System.Drawing.Size(1075, 626);
             this.User_Tab.TabIndex = 1;
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
@@ -439,7 +439,7 @@
             // aButton_search_DB
             // 
             this.aButton_search_DB.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.aButton_search_DB.Location = new System.Drawing.Point(582, 130);
+            this.aButton_search_DB.Location = new System.Drawing.Point(636, 134);
             this.aButton_search_DB.Name = "aButton_search_DB";
             this.aButton_search_DB.Size = new System.Drawing.Size(200, 23);
             this.aButton_search_DB.TabIndex = 42;
@@ -450,7 +450,7 @@
             // aButton_Search_TagInfo
             // 
             this.aButton_Search_TagInfo.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.aButton_Search_TagInfo.Location = new System.Drawing.Point(582, 159);
+            this.aButton_Search_TagInfo.Location = new System.Drawing.Point(842, 134);
             this.aButton_Search_TagInfo.Name = "aButton_Search_TagInfo";
             this.aButton_Search_TagInfo.Size = new System.Drawing.Size(200, 23);
             this.aButton_Search_TagInfo.TabIndex = 41;
@@ -460,11 +460,11 @@
             // 
             // aShowTag_tb
             // 
-            this.aShowTag_tb.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.aShowTag_tb.Location = new System.Drawing.Point(822, 130);
+            this.aShowTag_tb.Font = new System.Drawing.Font("Lucida Console", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aShowTag_tb.Location = new System.Drawing.Point(527, 170);
             this.aShowTag_tb.Name = "aShowTag_tb";
             this.aShowTag_tb.ReadOnly = true;
-            this.aShowTag_tb.Size = new System.Drawing.Size(217, 130);
+            this.aShowTag_tb.Size = new System.Drawing.Size(540, 103);
             this.aShowTag_tb.TabIndex = 40;
             this.aShowTag_tb.Text = "";
             // 
@@ -656,7 +656,7 @@
             this.last_logon_box.Location = new System.Drawing.Point(169, 250);
             this.last_logon_box.Name = "last_logon_box";
             this.last_logon_box.ReadOnly = true;
-            this.last_logon_box.Size = new System.Drawing.Size(407, 23);
+            this.last_logon_box.Size = new System.Drawing.Size(352, 23);
             this.last_logon_box.TabIndex = 21;
             // 
             // home_drive_box
@@ -665,7 +665,7 @@
             this.home_drive_box.Location = new System.Drawing.Point(169, 210);
             this.home_drive_box.Name = "home_drive_box";
             this.home_drive_box.ReadOnly = true;
-            this.home_drive_box.Size = new System.Drawing.Size(407, 23);
+            this.home_drive_box.Size = new System.Drawing.Size(352, 23);
             this.home_drive_box.TabIndex = 20;
             // 
             // manager_box
@@ -674,7 +674,7 @@
             this.manager_box.Location = new System.Drawing.Point(169, 170);
             this.manager_box.Name = "manager_box";
             this.manager_box.ReadOnly = true;
-            this.manager_box.Size = new System.Drawing.Size(407, 23);
+            this.manager_box.Size = new System.Drawing.Size(352, 23);
             this.manager_box.TabIndex = 19;
             // 
             // office_box
@@ -916,7 +916,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1061, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1083, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -1007,7 +1007,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1061, 718);
+            this.ClientSize = new System.Drawing.Size(1083, 718);
             this.Controls.Add(this.aClear_btn);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.pictureBox1);

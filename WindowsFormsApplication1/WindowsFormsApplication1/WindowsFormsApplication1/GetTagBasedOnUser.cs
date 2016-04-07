@@ -25,17 +25,21 @@ namespace WindowsFormsApplication1
         public string[] filesArray = Directory.GetFiles(sourcePath, "*.txt");
         public string[] localFilesArray;
 
-        private string FormatTagNumber(string tagNumber)
+        private string FormatTagNumber(string tagNumber, string username)
         {
-            int tagLenght = tagNumber.Length;
-            tagNumber = tagNumber.ToUpper();
-            int length = tagNumber.IndexOf("TAG-");
-            if (length != -1)
-                {
-                string temp = tagNumber.Substring(length,length);
-                int length2 = temp.IndexOf(",");
-                tagNumber = temp.Substring(0, length2);
-                }
+            tagNumber = tagNumber.ToLower();
+            tagNumber = tagNumber.Replace("\t", "");
+            tagNumber = tagNumber.Replace(username, "");
+            //tagNumber = tagNumber.Replace("\t", "");
+            //int tagLenght = tagNumber.Length;
+            //tagNumber = tagNumber.ToUpper();
+            //int length = tagNumber.IndexOf("TAG-");
+            //if (length != -1)
+            //    {
+            //    string temp = tagNumber.Substring(0,length);
+            //    int length2 = temp.IndexOf(",");
+            //    tagNumber = temp.Substring(0, length2);
+            //    }
             return tagNumber;
         }
 
@@ -61,7 +65,7 @@ namespace WindowsFormsApplication1
                                     string[] words = s.Split(' ', ',', '\t');
                                     for (int j = 0; j < words.Length; j++)
                                         if (words[j].ToLower().Equals(userName))
-                                            tagContainer += FormatTagNumber(s) + "\n";
+                                            tagContainer += FormatTagNumber(s,userName) + "\n";
                                 }
                             }
                         }

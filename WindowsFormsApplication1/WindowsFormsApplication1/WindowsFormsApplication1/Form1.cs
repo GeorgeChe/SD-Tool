@@ -42,6 +42,9 @@ namespace WindowsFormsApplication1
             user = loggedUser.Substring(4).ToUpper();
             string groupName = "UK IT Support Romania";
             List<string> usersList = new List<string>();
+            usersList.Add("CatalinE");
+            usersList.Add("ValentinH");
+            usersList.Add("AlexandruTi");
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain);
             GroupPrincipal group = GroupPrincipal.FindByIdentity(principalContext, groupName);
             if (group != null)
