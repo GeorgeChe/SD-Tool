@@ -76,13 +76,13 @@ namespace WindowsFormsApplication1
             string SamAccountName = SD.SamAccountName;
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, mainClass.selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
-            //userNewPassword = mainClass.RandomPasswordGenerator();
-            //user.SetPassword(userNewPassword);
-            //if (userMustChangePasswordAtNextLogin)
-            //{
-            //    user.ExpirePasswordNow();
-            //}
-            ////GetUserDetails();
+            userNewPassword = mainClass.RandomPasswordGenerator();
+            user.SetPassword(userNewPassword);
+            if (userMustChangePasswordAtNextLogin)
+            {
+                user.ExpirePasswordNow();
+            }
+            //GetUserDetails();
             user.Dispose();
             principalContext.Dispose();
             sendEmailWithTheNewPassword();
