@@ -43,29 +43,36 @@ namespace WindowsFormsApplication1
         {
          userName = userName.ToLower();
          string tagContainer = string.Empty;
-         localFilesArray = Directory.GetFiles(destinationPath, "*.txt");
-
-            if (localFilesArray.Length != 0)
+            if (Directory.Exists(destinationPath))
             {
-                for (int i = localFilesArray.Length - 1; i >= 0; i--)
+                localFilesArray = Directory.GetFiles(destinationPath, "*.txt");
+
+                if (localFilesArray.Length != 0)
                 {
-                    using (StreamReader sr = File.OpenText(localFilesArray[i]))
+                    for (int i = localFilesArray.Length - 1; i >= 0; i--)
                     {
-                        string s = string.Empty;
-                        while ((s = sr.ReadLine()) != null)
+                        using (StreamReader sr = File.OpenText(localFilesArray[i]))
                         {
-                            if (s.ToLower().Contains(userName))
+                            string s = string.Empty;
+                            while ((s = sr.ReadLine()) != null)
                             {
-                                string[] words = s.Split(' ', ',', '\t');
-                                for (int j = 0; j < words.Length; j++)
-                                    if (words[j].ToLower().Equals(userName))
-                                        tagContainer += FormatTagNumber(s) + "\n";
+                                if (s.ToLower().Contains(userName))
+                                {
+                                    string[] words = s.Split(' ', ',', '\t');
+                                    for (int j = 0; j < words.Length; j++)
+                                        if (words[j].ToLower().Equals(userName))
+                                            tagContainer += FormatTagNumber(s) + "\n";
+                                }
                             }
                         }
                     }
                 }
             }
+            else
+            tagContainer = "Please refresh database!";
+
             return tagContainer;
+            
         }
 
         public void ForLoop()
@@ -75,6 +82,7 @@ namespace WindowsFormsApplication1
                 CopyFiles(j);
             }
         }
+
         public void ParallelForLoop()
         {
             int i = -1;
@@ -104,17 +112,12 @@ namespace WindowsFormsApplication1
 
         public void MakeTagInfoFolder()
         {
-            if ((localFilesArray = Directory.GetFiles(destinationPath, "*.txt")).Length != 0)
-                localFilesArray = Directory.GetFiles(destinationPath, "*.txt");
             if (!Directory.Exists(destinationPath))
             {
                 Directory.CreateDirectory(destinationPath);
-                //Console.WriteLine($"File {folderName} created!");
             }
-            else
-            {
-                //Console.WriteLine($"File {folderName} already exists!");
-            }
+            if ((localFilesArray = Directory.GetFiles(destinationPath, "*.txt")).Length != 0)
+                localFilesArray = Directory.GetFiles(destinationPath, "*.txt");
 
         }
     }
