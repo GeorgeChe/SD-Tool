@@ -52,6 +52,9 @@
             this.button14 = new System.Windows.Forms.Button();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.User_Tab = new System.Windows.Forms.TabPage();
+            this.aButton_search_DB = new System.Windows.Forms.Button();
+            this.aButton_Search_TagInfo = new System.Windows.Forms.Button();
+            this.aShowTag_tb = new System.Windows.Forms.RichTextBox();
             this.getIPAddrBtn = new System.Windows.Forms.Button();
             this.unlockAccountBtn = new System.Windows.Forms.Button();
             this.current_dc_lbl = new System.Windows.Forms.Label();
@@ -107,9 +110,6 @@
             this.deviceManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label17 = new System.Windows.Forms.Label();
             this.aClear_btn = new System.Windows.Forms.Button();
-            this.aShowTag_tb = new System.Windows.Forms.RichTextBox();
-            this.aButton_Search_TagInfo = new System.Windows.Forms.Button();
-            this.aButton_search_DB = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -435,6 +435,38 @@
             this.User_Tab.Text = "User";
             this.User_Tab.UseVisualStyleBackColor = true;
             this.User_Tab.Click += new System.EventHandler(this.User_Tab_Click);
+            // 
+            // aButton_search_DB
+            // 
+            this.aButton_search_DB.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.aButton_search_DB.Location = new System.Drawing.Point(582, 130);
+            this.aButton_search_DB.Name = "aButton_search_DB";
+            this.aButton_search_DB.Size = new System.Drawing.Size(200, 23);
+            this.aButton_search_DB.TabIndex = 42;
+            this.aButton_search_DB.Text = "Refresh Database";
+            this.aButton_search_DB.UseVisualStyleBackColor = true;
+            this.aButton_search_DB.Click += new System.EventHandler(this.aButton_search_DB_Click);
+            // 
+            // aButton_Search_TagInfo
+            // 
+            this.aButton_Search_TagInfo.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.aButton_Search_TagInfo.Location = new System.Drawing.Point(582, 159);
+            this.aButton_Search_TagInfo.Name = "aButton_Search_TagInfo";
+            this.aButton_Search_TagInfo.Size = new System.Drawing.Size(200, 23);
+            this.aButton_Search_TagInfo.TabIndex = 41;
+            this.aButton_Search_TagInfo.Text = "Search TagInfo";
+            this.aButton_Search_TagInfo.UseVisualStyleBackColor = true;
+            this.aButton_Search_TagInfo.Click += new System.EventHandler(this.aButton_Search_TagInfo_Click);
+            // 
+            // aShowTag_tb
+            // 
+            this.aShowTag_tb.Font = new System.Drawing.Font("Lucida Console", 12F);
+            this.aShowTag_tb.Location = new System.Drawing.Point(822, 130);
+            this.aShowTag_tb.Name = "aShowTag_tb";
+            this.aShowTag_tb.ReadOnly = true;
+            this.aShowTag_tb.Size = new System.Drawing.Size(217, 130);
+            this.aShowTag_tb.TabIndex = 40;
+            this.aShowTag_tb.Text = "";
             // 
             // getIPAddrBtn
             // 
@@ -893,7 +925,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // exitToolStripMenuItem
@@ -912,41 +944,41 @@
             this.computerManagementToolStripMenuItem,
             this.deviceManagerToolStripMenuItem});
             this.externalToolsToolStripMenuItem.Name = "externalToolsToolStripMenuItem";
-            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
+            this.externalToolsToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.externalToolsToolStripMenuItem.Text = "External Tools";
             // 
             // cmdToolStripMenuItem
             // 
             this.cmdToolStripMenuItem.Name = "cmdToolStripMenuItem";
-            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.cmdToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.cmdToolStripMenuItem.Text = "Cmd";
             this.cmdToolStripMenuItem.Click += new System.EventHandler(this.cmdToolStripMenuItem_Click);
             // 
             // powerShellToolStripMenuItem
             // 
             this.powerShellToolStripMenuItem.Name = "powerShellToolStripMenuItem";
-            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.powerShellToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.powerShellToolStripMenuItem.Text = "PowerShell";
             this.powerShellToolStripMenuItem.Click += new System.EventHandler(this.powerShellToolStripMenuItem_Click);
             // 
             // regeditToolStripMenuItem
             // 
             this.regeditToolStripMenuItem.Name = "regeditToolStripMenuItem";
-            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.regeditToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.regeditToolStripMenuItem.Text = "Regedit";
             this.regeditToolStripMenuItem.Click += new System.EventHandler(this.regeditToolStripMenuItem_Click);
             // 
             // computerManagementToolStripMenuItem
             // 
             this.computerManagementToolStripMenuItem.Name = "computerManagementToolStripMenuItem";
-            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.computerManagementToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.computerManagementToolStripMenuItem.Text = "Computer Management";
             this.computerManagementToolStripMenuItem.Click += new System.EventHandler(this.computerManagementToolStripMenuItem_Click);
             // 
             // deviceManagerToolStripMenuItem
             // 
             this.deviceManagerToolStripMenuItem.Name = "deviceManagerToolStripMenuItem";
-            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.deviceManagerToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
             this.deviceManagerToolStripMenuItem.Text = "Device Manager";
             this.deviceManagerToolStripMenuItem.Click += new System.EventHandler(this.deviceManagerToolStripMenuItem_Click);
             // 
@@ -970,38 +1002,6 @@
             this.aClear_btn.Text = "Clear";
             this.aClear_btn.UseVisualStyleBackColor = true;
             this.aClear_btn.Click += new System.EventHandler(this.aClear_btn_Click);
-            // 
-            // aShowTag_tb
-            // 
-            this.aShowTag_tb.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.aShowTag_tb.Location = new System.Drawing.Point(822, 130);
-            this.aShowTag_tb.Name = "aShowTag_tb";
-            this.aShowTag_tb.ReadOnly = true;
-            this.aShowTag_tb.Size = new System.Drawing.Size(217, 130);
-            this.aShowTag_tb.TabIndex = 40;
-            this.aShowTag_tb.Text = "";
-            // 
-            // aButton_Search_TagInfo
-            // 
-            this.aButton_Search_TagInfo.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.aButton_Search_TagInfo.Location = new System.Drawing.Point(582, 159);
-            this.aButton_Search_TagInfo.Name = "aButton_Search_TagInfo";
-            this.aButton_Search_TagInfo.Size = new System.Drawing.Size(200, 23);
-            this.aButton_Search_TagInfo.TabIndex = 41;
-            this.aButton_Search_TagInfo.Text = "Search TagInfo";
-            this.aButton_Search_TagInfo.UseVisualStyleBackColor = true;
-            this.aButton_Search_TagInfo.Click += new System.EventHandler(this.aButton_Search_TagInfo_Click);
-            // 
-            // aButton_search_DB
-            // 
-            this.aButton_search_DB.Font = new System.Drawing.Font("Lucida Console", 12F);
-            this.aButton_search_DB.Location = new System.Drawing.Point(582, 130);
-            this.aButton_search_DB.Name = "aButton_search_DB";
-            this.aButton_search_DB.Size = new System.Drawing.Size(200, 23);
-            this.aButton_search_DB.TabIndex = 42;
-            this.aButton_search_DB.Text = "Refresh Database";
-            this.aButton_search_DB.UseVisualStyleBackColor = true;
-            this.aButton_search_DB.Click += new System.EventHandler(this.aButton_search_DB_Click);
             // 
             // SD
             // 
@@ -1073,11 +1073,11 @@
         private System.Windows.Forms.TextBox lockout_status_box;
         private System.Windows.Forms.TextBox last_logon_box;
         private System.Windows.Forms.TextBox home_drive_box;
-        private System.Windows.Forms.TextBox manager_box;
+        public System.Windows.Forms.TextBox manager_box;
         private System.Windows.Forms.TextBox office_box;
         private System.Windows.Forms.TextBox description_box;
         private System.Windows.Forms.TextBox display_name_box;
-        private System.Windows.Forms.TextBox user_box;
+        public System.Windows.Forms.TextBox user_box;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;

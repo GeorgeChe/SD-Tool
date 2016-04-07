@@ -6,7 +6,6 @@ using System.DirectoryServices.AccountManagement;
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.DirectoryServices.ActiveDirectory;
-using Outlook = Microsoft.Office.Interop.Outlook;
 using System.IO;
 using System.Text;
 using System.Drawing;
@@ -17,13 +16,12 @@ namespace WindowsFormsApplication1
     {
         //Global Stuff
         int processId = 0; // counts how many processes are running
-        string selectedDomainController; // selected domain controller;
+        public string selectedDomainController; // selected domain controller;
         string loggedUser = "";
         bool isUserLockedOut; // False if the account is not locked and true if the user is locked out. Global var updated from the GetUserDetails method.
-        string userDetailsName;
-        string userManagerName;
-        string userNewPassword;
-
+        public static string userDetailsName;
+        public static string SamAccountName;
+        public static string userManagerName;
 
 
         static string theDirectory = AppDomain.CurrentDomain.BaseDirectory + @"MachineInfo.psm1";
@@ -191,6 +189,14 @@ namespace WindowsFormsApplication1
                     ReturnText(text);
                     this.button14.Enabled = true;
                     break;
+                case 15:
+                    GetTagBasedOnUser userTag = new GetTagBasedOnUser();
+                    userTag.MakeTagInfoFolder();
+                    await Task.Run(() => userTag.ParallelForLoop());
+                    this.aButton_search_DB.Enabled = true;
+                    processId--;
+                    CheckStatus();
+                    break;
             }
         }
         private void getDomainControllers()
@@ -221,7 +227,7 @@ namespace WindowsFormsApplication1
         }
         private void GetUserDetails()
         {
-            string SamAccountName = user_box.Text;
+            SamAccountName = user_box.Text;
             if(user_box.Text == string.Empty)
             {
                 SamAccountName = "abc";
@@ -231,7 +237,7 @@ namespace WindowsFormsApplication1
             current_dc_lbl.Text = "Current DC:" + FormatDomainControllerName(selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
             DirectoryEntry dEntry = new DirectoryEntry();
-            
+
             if (user == null)
             {
                 ClearUserTab();
@@ -246,7 +252,10 @@ namespace WindowsFormsApplication1
                 userDetailsName = user.DisplayName; // prepare the name of the user for the password reset email
                 display_name_box.Text = user.DisplayName;
                 description_box.Text = user.Description;
-                office_box.Text = dEntry.Properties["physicalDeliveryOfficeName"].Value.ToString();
+                if ((dEntry.Properties["physicalDeliveryOfficeName"].Value) != null)
+                    office_box.Text = dEntry.Properties["physicalDeliveryOfficeName"].Value.ToString();
+                else
+                    office_box.Text = "N/A";
                 if (dEntry.Properties["manager"].Value != null)
                 {
                     string manager = dEntry.Properties["manager"].Value.ToString();
@@ -434,6 +443,7 @@ namespace WindowsFormsApplication1
             if (e.KeyCode == Keys.Enter)
             {
                 button15_Click(this, new EventArgs());
+                aButton_Search_TagInfo_Click(this, new EventArgs());
             }
         }
         private void dc_comboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -524,7 +534,7 @@ namespace WindowsFormsApplication1
         }
         private void checkBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            string SamAccountName = user_box.Text;
+            SamAccountName = user_box.Text;
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
             
@@ -580,7 +590,7 @@ namespace WindowsFormsApplication1
         }
         private void disable_btn_Click(object sender, EventArgs e)
         {
-            string SamAccountName = user_box.Text;
+            SamAccountName = user_box.Text;
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
 
@@ -598,7 +608,7 @@ namespace WindowsFormsApplication1
             user.Dispose();
             principalContext.Dispose();
         }
-        private string RandomPasswordGenerator()
+        public string RandomPasswordGenerator()
         {
             Random randomNumberGenerator = new Random();
             string[] words = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "January",
@@ -612,65 +622,19 @@ namespace WindowsFormsApplication1
             }
             return generatedPassword;
         }
-        //*******************************  PASSWORD RESTE BUTTON ***************************************** DON'T FORGET TO ENABLE THIS
+        //*******************************  PASSWORD RESTE BUTTON *****************************************
         private void button18_Click(object sender, EventArgs e)
         {
-            string SamAccountName = user_box.Text;
-            PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
-            UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
-            userNewPassword = RandomPasswordGenerator();
-            user.SetPassword(userNewPassword);
-            GetUserDetails();
-            user.Dispose();
-            principalContext.Dispose();
-            sendEmailWithTheNewPassword();
+            ResetPassword form = new ResetPassword();
+            form.Show();
         }
-        private void sendEmailWithTheNewPassword()
-        {
-            Outlook.Application outlookApp = new Outlook.Application();
-            Outlook._MailItem oMailItem = (Outlook._MailItem)outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
-            string manager = manager_box.Text;
-            if (manager_box.Text != string.Empty)
-            {
-            int Length = manager.IndexOf(' ');
-            manager = manager.Substring(0, Length);
-            }
-            oMailItem.To = manager_box.Text;
-            oMailItem.Subject = "New network account password for " + userDetailsName;
-            oMailItem.HTMLBody = $"<html><title></title><body style='font-family:Calibri;font size=11;font-style:italic;'><p> Dear {manager},</p><p> We received a request for a Password Reset from {userDetailsName}.</p></p>Please find below the requested details:<p><p> Username:<span style = 'color: red;'>{user_box.Text} </span ></p><p> Password: <span style = 'color: red;'>{userNewPassword} </span ></p>We kindly advise to forward these details to {userDetailsName} in order for the request to be complete.</p></p>Should you have any questions, please contact the Service Desk on 0121 281 8600 or It.Support@scc.com<p></p><p></p></body></html>" +"\n \n"+ReadSignature();
-            oMailItem.Display(true);
-        }
-        private string ReadSignature()
-        {
-            string appDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Microsoft\\Signatures";
-            string signature = string.Empty;
-            DirectoryInfo diInfo = new DirectoryInfo(appDataDir);
-
-            if (diInfo.Exists)
-            {
-                FileInfo[] fiSignature = diInfo.GetFiles("*.htm");
-
-                if (fiSignature.Length > 0)
-                {
-                    StreamReader sr = new StreamReader(fiSignature[0].FullName, Encoding.Default);
-                    signature = sr.ReadToEnd();
-
-                    if (!string.IsNullOrEmpty(signature))
-                    {
-                        string fileName = fiSignature[0].Name.Replace(fiSignature[0].Extension, string.Empty);
-                        signature = signature.Replace(fileName + "_files/", appDataDir + "/" + fileName + "_files/");
-                    }
-                }
-            }
-            return signature;
-        }
+        //*******************************  PASSWORD RESTE BUTTON *****************************************
         // Update description!
         private void button16_Click(object sender, EventArgs e)
         {
-            string SamAccountName = user_box.Text;
+            SamAccountName = user_box.Text;
             PrincipalContext principalContext = new PrincipalContext(ContextType.Domain, selectedDomainController);
             UserPrincipal user = UserPrincipal.FindByIdentity(principalContext, IdentityType.SamAccountName, SamAccountName);
-
             user.Description = description_box.Text;
             user.Save();
             GetUserDetails();
@@ -690,14 +654,21 @@ namespace WindowsFormsApplication1
 
         private void aButton_search_DB_Click(object sender, EventArgs e)
         {
-            GetTagBasedOnUser getTagBasedOnUser = new GetTagBasedOnUser();
-            getTagBasedOnUser.DownloadFile("https://sccitsm.service-now.com/sys_report_template.do?jvar_report_id=a05975a237d616808ba1138943990ee8", "c:\\test\\incident.csv");
+            MakeTheWorldBurnAsync(15);
+            CheckStatus();
+            this.aButton_search_DB.Enabled = false;
         }
 
         private void aButton_Search_TagInfo_Click(object sender, EventArgs e)
         {
-            GetTagBasedOnUser searchExcelFile = new GetTagBasedOnUser();
-            aShowTag_tb.Text += searchExcelFile.SearchExcelFile(display_name_box.Text)+"\n";
+            if (user_box.Text != string.Empty)
+            {
+                GetTagBasedOnUser userTag = new GetTagBasedOnUser();
+                
+                aShowTag_tb.Text = userTag.ContineRezultat(user_box.Text);
+            }
+            else
+                description_box.Text = "Please enter a username!";
         }
     }
 }

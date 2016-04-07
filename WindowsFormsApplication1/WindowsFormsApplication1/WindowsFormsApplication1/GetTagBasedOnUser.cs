@@ -7,120 +7,206 @@ using System.Net;
 using System.IO;
 using Microsoft.Office.Interop.Excel;
 using System.Windows.Forms;
+using System.Threading;
+using System.Collections;
+
 
 namespace WindowsFormsApplication1
 {
     public class GetTagBasedOnUser
     {
-        public string SearchExcelFile(string userDisplayName)
+
+    
+    
+        static string theBaseDirectory = AppDomain.CurrentDomain.BaseDirectory; // containg the base directry for the .EXE file
+        static string folderName = "TagInfo";
+        static string destinationPath = Path.Combine(theBaseDirectory, folderName);
+        static string sourcePath = @"\\sch.com\it\Audit";
+        public string[] filesArray = Directory.GetFiles(sourcePath, "*.txt");
+        public string[] localFilesArray;
+
+        private string FormatTagNumber(string tagNumber)
         {
-            string tagNumber = " ";
-            var fullFilePath = @"C:\test\cmdb_ci_computer.xls";   // Path to the file
-
-            var application = new Microsoft.Office.Interop.Excel.Application();
-            var workBook = application.Workbooks.Open(fullFilePath);        // Open the file
-            var inputWorkSheet = (Worksheet)application.Worksheets[1];      // Select the 1st sheet
-
-            var rowCnt = application.ActiveSheet.UsedRange.Rows.Count;      // Get number of rows
-            var colCnt = application.ActiveSheet.UsedRange.Columns.Count;   // Get number of columns
-
-            int maxNumRow = rowCnt;
-            int maxNumCol = colCnt;
-
-
-            //verifica pe ce coloana Contact Type, Opened by si Description
-            for (int row = 1; row <= maxNumRow; row++)
-            {
-                    Range cell = (Range)inputWorkSheet.Cells[row,2];
-                    if(userDisplayName == cell.Value)
-                    {
-                        Range cellx = (Range)inputWorkSheet.Cells[row,1];
-                        tagNumber = cellx.Value;
-                    }
-            }
-            //workBook.SaveAs(fullFilePath, XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,false, false, 
-            //XlSaveAsAccessMode.xlNoChange,Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-            workBook.Close(); // finally close workbook
-            Console.WriteLine("Workbook closed.");
-            application.Quit();
-            Console.WriteLine("File closed.");
+            int tagLenght = tagNumber.Length;
+            tagNumber = tagNumber.ToUpper();
+            int length = tagNumber.IndexOf("TAG-");
+            if (length != -1)
+                {
+                string temp = tagNumber.Substring(length,length);
+                int length2 = temp.IndexOf(",");
+                tagNumber = temp.Substring(0, length2);
+                }
             return tagNumber;
         }
 
-        public void DownloadFile(String url,String localFilename)
+        public string ContineRezultat(string userName)
         {
-            int bytesProcessed = 0;
-            Stream remoteStream = null;
-            Stream localStream = null;
-            WebResponse response = null;
-            
-           // try
-           // {
-                // Create a request for the specified remote file name
-                WebRequest request = WebRequest.Create(url);
-            // Create the credentials required for Basic Authentication
-            //System.Net.ICredentials credentials = new System.Net.NetworkCredential("user", "pass");
-            //ICredentials credentials = CredentialCache.DefaultCredentials;
-            // Add the credentials to the request
-            //request.Credentials = credentials;
-            System.Net.ICredentials cred = new System.Net.NetworkCredential("LiviP", "pizdamati4!");
-                request.Proxy.Credentials = CredentialCache.DefaultCredentials;
-                request.Credentials = cred;
-                if (request != null)
+         userName = userName.ToLower();
+         string tagContainer = string.Empty;
+         localFilesArray = Directory.GetFiles(destinationPath, "*.txt");
+
+            if (localFilesArray.Length != 0)
             {
-                // Send the request to the server and retrieve the
-                // WebResponse object 
-                response = request.GetResponse();
-                if (response != null)
+                for (int i = localFilesArray.Length - 1; i >= 0; i--)
                 {
-                    // Once the WebResponse object has been retrieved,
-                    // get the stream object associated with the response's data
-                    remoteStream = response.GetResponseStream();
-                    // Create the local file
-                    localStream = File.Create(localFilename);
-                    // Allocate a 1k buffer
-                    byte[] buffer = new byte[1024];
-                    int bytesRead;
-                    // Simple do/while loop to read from stream until
-                    // no bytes are returned
-                    do
+                    using (StreamReader sr = File.OpenText(localFilesArray[i]))
                     {
-                        // Read data (up to 1k) from the stream
-                        bytesRead = remoteStream.Read(buffer, 0, buffer.Length);
-                        // Write the data to the local file
-                        localStream.Write(buffer, 0, bytesRead);
-                        // Increment total bytes processed
-                        bytesProcessed += bytesRead;
-                    } while (bytesRead > 0);
+                        string s = string.Empty;
+                        while ((s = sr.ReadLine()) != null)
+                        {
+                            if (s.ToLower().Contains(userName))
+                            {
+                                string[] words = s.Split(' ', ',', '\t');
+                                for (int j = 0; j < words.Length; j++)
+                                    if (words[j].ToLower().Equals(userName))
+                                        tagContainer += FormatTagNumber(s) + "\n";
+                            }
+                        }
+                    }
                 }
             }
-            //  }
-            //  catch (Exception e)
-            //  {
-            //       MessageBox.Show(e.Message);
-            //   }
-            //    finally
-            //     {
-            if (response != null) response.Close();
-            if (remoteStream != null) remoteStream.Close();
-            if (localStream != null) localStream.Close();
-      //      }
-            Console.WriteLine(bytesProcessed);
+            return tagContainer;
         }
 
-        public string ColumnIndexToColumnLetter(int colIndex)
+        public void ForLoop()
         {
-            int div = colIndex;
-            string colLetter = String.Empty;
-            int mod = 0;
-
-            while (div > 0)
+            for (int j = 0; j < filesArray.Length; j++)
             {
-                mod = (div - 1) % 26;
-                colLetter = (char)(65 + mod) + colLetter;
-                div = (int)((div - mod) / 26);
+                CopyFiles(j);
             }
-            return colLetter;
+        }
+        public void ParallelForLoop()
+        {
+            int i = -1;
+            Parallel.For(0, filesArray.Length,
+                copy =>
+                {
+                    int nextIndex = Interlocked.Increment(ref i);
+                    CopyFiles(nextIndex);
+                });
+        }
+
+        public void CopyFiles(int index)
+        {
+            string localFileName = filesArray[index].ToString().Substring(filesArray[index].ToString().LastIndexOf('\\'));
+            if (localFilesArray.Length != 0)
+            {
+                Array.Sort(localFilesArray, new AlphanumComparatorFast());
+                Array.Sort(filesArray, new AlphanumComparatorFast());
+                FileInfo localFile = new FileInfo(localFilesArray[index]);
+                FileInfo serverFile = new FileInfo(filesArray[index]);
+                if (serverFile.LastWriteTime > localFile.LastWriteTime)
+                    File.Copy(filesArray[index].ToString(), destinationPath + localFileName, true);
+            }
+            else
+                File.Copy(filesArray[index].ToString(), destinationPath + localFileName, true);
+        }
+
+        public void MakeTagInfoFolder()
+        {
+            if ((localFilesArray = Directory.GetFiles(destinationPath, "*.txt")).Length != 0)
+                localFilesArray = Directory.GetFiles(destinationPath, "*.txt");
+            if (!Directory.Exists(destinationPath))
+            {
+                Directory.CreateDirectory(destinationPath);
+                //Console.WriteLine($"File {folderName} created!");
+            }
+            else
+            {
+                //Console.WriteLine($"File {folderName} already exists!");
+            }
+
+        }
+    }
+    public class AlphanumComparatorFast : IComparer
+    {
+        public int Compare(object x, object y)
+        {
+            string s1 = x as string;
+            if (s1 == null)
+            {
+                return 0;
+            }
+            string s2 = y as string;
+            if (s2 == null)
+            {
+                return 0;
+            }
+
+            int len1 = s1.Length;
+            int len2 = s2.Length;
+            int marker1 = 0;
+            int marker2 = 0;
+
+            // Walk through two the strings with two markers.
+            while (marker1 < len1 && marker2 < len2)
+            {
+                char ch1 = s1[marker1];
+                char ch2 = s2[marker2];
+
+                // Some buffers we can build up characters in for each chunk.
+                char[] space1 = new char[len1];
+                int loc1 = 0;
+                char[] space2 = new char[len2];
+                int loc2 = 0;
+
+                // Walk through all following characters that are digits or
+                // characters in BOTH strings starting at the appropriate marker.
+                // Collect char arrays.
+                do
+                {
+                    space1[loc1++] = ch1;
+                    marker1++;
+
+                    if (marker1 < len1)
+                    {
+                        ch1 = s1[marker1];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } while (char.IsDigit(ch1) == char.IsDigit(space1[0]));
+
+                do
+                {
+                    space2[loc2++] = ch2;
+                    marker2++;
+
+                    if (marker2 < len2)
+                    {
+                        ch2 = s2[marker2];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                } while (char.IsDigit(ch2) == char.IsDigit(space2[0]));
+
+                // If we have collected numbers, compare them numerically.
+                // Otherwise, if we have strings, compare them alphabetically.
+                string str1 = new string(space1);
+                string str2 = new string(space2);
+
+                int result;
+
+                if (char.IsDigit(space1[0]) && char.IsDigit(space2[0]))
+                {
+                    int thisNumericChunk = int.Parse(str1);
+                    int thatNumericChunk = int.Parse(str2);
+                    result = thisNumericChunk.CompareTo(thatNumericChunk);
+                }
+                else
+                {
+                    result = str1.CompareTo(str2);
+                }
+
+                if (result != 0)
+                {
+                    return result;
+                }
+            }
+            return len1 - len2;
         }
     }
 }

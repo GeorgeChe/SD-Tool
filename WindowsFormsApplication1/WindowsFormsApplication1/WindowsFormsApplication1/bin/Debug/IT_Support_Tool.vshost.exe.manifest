@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="227760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IT_Support_Tool.exe" size="226736">
       <assemblyIdentity name="IT_Support_Tool" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>EHZ76BFXQjbNlo/ClBQRsyMMm/j0iIYHX44JYM45er8=</dsig:DigestValue>
+        <dsig:DigestValue>e7chWWBwaA0qv5sCRqbt3bckYp8uxxFdoPs7eFLij74=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
